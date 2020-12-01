@@ -1,0 +1,40 @@
+.bg-img{
+  height: 120vh;
+  padding: 0;
+  width: 100%;
+  background: url('../../../assets/img/discovering-pizzo.jpg') no-repeat center center fixed;
+  opacity: 85%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.header-title{
+  padding-top: 10rem;
+  font-weight: bold;
+  font-size: 60px;
+  color: black;
+}
+
+.header-title > span{
+  background-color: rgba(254, 255, 187, 0.6);
+  padding: 0.7rem;
+}
+
+.header-subtitle{
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+}
+
+.header-subtitle > span{
+  background-color: rgba(254, 255, 187, 0.6);
+  padding: 0.7rem;
+}
+
+
+.card-selection:hover{
+  border: 4px solid #fed701;
+  font-weight: bold;
+}

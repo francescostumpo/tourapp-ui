@@ -1,0 +1,90 @@
+<div class="bg-img-anagrafica">
+  <section class="from-fixed-navbar">
+    <div class="container-fluid">
+      <div class="row row-margin">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <div class="card mb-4">
+            <p class="mt-4 text-center" style="font-size: 24px; font-weight: bold;">Gestisci Tour Operators</p>
+            <hr>
+            <div class="card-body row mb-3">
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card card-selection">
+                  <div class="card-body mt-2">
+                    <p style="font-weight: bold">Tour Operators censiti</p>
+                    <table class="table table-bordered">
+                      <thead>
+                      <tr>
+                        <th></th>
+                        <th>Nome</th>
+                        <th>Societa</th>
+                        <th></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let tourOperator of tourOperatorList; index as i">
+                        <td>{{i + 1}}</td>
+                        <td>{{tourOperator.nome}}</td>
+                        <td>{{tourOperator.societa}}</td>
+                        <td class="text-center"><span style="cursor: pointer" ><fa-icon [icon]="faPencilAlt"></fa-icon></span> &nbsp; <span style="cursor: pointer" ><fa-icon [icon]="faTrashAlt"></fa-icon></span></td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card card-selection">
+                  <div class="card-body mt-2">
+                    <div class="form-group row">
+                      <label for="nome" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Nome TourOperator</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="nome">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="citta" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Citta</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="citta">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="telefono" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Telefono</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="telefono">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="societa" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Societa</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="societa">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="provincia" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Provincia</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="provincia">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="indirizzo" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Indirizzo</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="indirizzo">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="cap" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">CAP</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="number" class="form-control" id="cap">
+                      </div>
+                    </div>
+                    <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12">Crea/Aggiorna TourOperator</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

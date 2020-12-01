@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg bg-kairos fixed-top">
+  <div class="d-none d-md-block">
+    <img routerLink="/iJ2C" src="assets/img/logo-kairos.png" class="mt-2"
+         width="40%" style="cursor: pointer;"><span class="align-middle" style="letter-spacing: 0.2px; font-weight: bold; font-size: 24px;">&nbsp; [TourApp]</span>
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-nav ml-auto" id="navbarSupportedContent">
+    <ul ngbNav class="mr-auto">
+      <li ngbNavItem>
+        <a ngbNavLink routerLink="/tourApp" routerLinkActive="link-active" [routerLinkActiveOptions]="{exact: true}" style="color: white">Homepage<span class="sr-only">(current)</span></a>
+      </li>
+      <li ngbNavItem>
+        <a ngbNavLink routerLink="/tourApp/ticketing" routerLinkActive="link-active" style="color: white">Ticketing</a>
+      </li>
+      <li ngbNavItem>
+        <a ngbNavLink routerLink="/tourApp/reporting" routerLinkActive="link-active" class="disabled" disabled="">Reporting</a>
+      </li>
+      <!--<li ngbNavItem ngbDropdown style="cursor: pointer">
+        <a class="dropdown-toggle" id="navbarDropdown" ngbNavLink ngbDropdownToggle style="color: white">
+          Dropdown
+        </a>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdown">
+          <a ngbDropdownItem href="#">Action</a>
+          <a ngbDropdownItem href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a ngbDropdownItem href="#">Something else here</a>
+        </div>
+      </li>-->
+      <li ngbNavItem>
+        <a ngbNavLink routerLink="/tourApp/booking" routerLinkActive="link-active" class="disabled" disabled="">Booking</a>
+      </li>
+      <li ngbNavItem>
+        <a ngbNavLink routerLink="/tourApp/anagrafica" routerLinkActive="link-active" style="color: white">Anagrafica</a>
+      </li>
+    </ul>
+    <!--<form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button ngbButton class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+    </form>-->
+
+  </div>
+</nav>

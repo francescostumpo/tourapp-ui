@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+.from-fixed-navbar{
+  padding-top: 5rem;
+}
+.bg-img-ticket{
+  height: 120vh;
+  padding: 0;
+  width: 100%;
+  background: url('assets/img/biglietteria.jpg') no-repeat center center fixed;
+  opacity: 85%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.bg-img-anagrafica{
+  height: 120vh;
+  padding: 0;
+  width: 100%;
+  background: url('assets/img/datacenter.jpg') no-repeat center center fixed;
+  opacity: 85%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.bg-section{
+  margin-top: 6rem;
+  /*min-height: 50vh;*/
+  /*background-color: #f0f4f4;*/
+}
+
+.row-margin{
+  padding-top: 3rem;
+}
+
+.btn-outline-kairos {
+  color: #ffc107;
+  border-color: #ffc107;
+}
+
+.btn-outline-kairos:hover{
+  background: linear-gradient(90deg, rgba(241,245,5,1) 0%, rgba(236,142,5,1) 50%, rgba(255,0,7,1) 100%);
+  color: black;
+}
