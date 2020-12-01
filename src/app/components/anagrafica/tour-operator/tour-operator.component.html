@@ -4,7 +4,12 @@
       <div class="row row-margin">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
           <div class="card mb-4">
-            <p class="mt-4 text-center" style="font-size: 24px; font-weight: bold;">Gestisci Tour Operators</p>
+            <div class="card-body row">
+              <p class="mt-3 ml-3" style="font-size: 24px; font-weight: bold;">Gestisci Tour Operator</p>
+              <div class="ml-auto mt-3 mr-3">
+                <button ngbButton class="btn btn-outline-kairos" (click)="toggleCreateOrUpdatePanel('create')">Crea nuova Tour Operator</button>
+              </div>
+            </div>
             <hr>
             <div class="card-body row mb-3">
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -25,7 +30,7 @@
                         <td>{{i + 1}}</td>
                         <td>{{tourOperator.nome}}</td>
                         <td>{{tourOperator.societa}}</td>
-                        <td class="text-center"><span style="cursor: pointer" ><fa-icon [icon]="faPencilAlt"></fa-icon></span> &nbsp; <span style="cursor: pointer" ><fa-icon [icon]="faTrashAlt"></fa-icon></span></td>
+                        <td class="text-center"><span style="cursor: pointer" ><fa-icon [icon]="faPencilAlt" (click)="moveForUpdate(tourOperator)"></fa-icon></span> &nbsp; <span style="cursor: pointer" ><fa-icon [icon]="faTrashAlt"></fa-icon></span></td>
                       </tr>
                       </tbody>
                     </table>
@@ -33,51 +38,100 @@
                 </div>
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                <div class="card card-selection">
+                <div class="card card-selection" *ngIf="isPanelUpdateVisible">
                   <div class="card-body mt-2">
+                    <p style="font-weight: bold">Aggiorna Tipologia</p>
+                    <div class="form-group row">
+                      <label for="nomeUpdate" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Nome TourOperator</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="nomeUpdate" [(ngModel)]="tourOperatorForUpdate.nome">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="cittaUpdate" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Citta</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="cittaUpdate" [(ngModel)]="tourOperatorForUpdate.citta">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="telefonoUpdate" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Telefono</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="telefonoUpdate" [(ngModel)]="tourOperatorForUpdate.telefono">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="societaUpdate" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Societa</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="societaUpdate" [(ngModel)]="tourOperatorForUpdate.societa">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="provinciaUpdate" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Provincia</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="provinciaUpdate" [(ngModel)]="tourOperatorForUpdate.provincia">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="indirizzoUpdate" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Indirizzo</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="indirizzoUpdate" [(ngModel)]="tourOperatorForUpdate.indirizzo">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="capUpdate" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">CAP</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="number" class="form-control" id="capUpdate" [(ngModel)]="tourOperatorForUpdate.cap">
+                      </div>
+                    </div>
+                    <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="createOrUpdateTourOperator('update')">Aggiorna TourOperator</button>
+                  </div>
+                </div>
+                <div class="card card-selection" *ngIf="isPanelCreateVisible">
+                  <div class="card-body mt-2">
+                    <p style="font-weight: bold">Crea nuova Tipologia</p>
                     <div class="form-group row">
                       <label for="nome" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Nome TourOperator</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" id="nome">
+                        <input type="text" class="form-control" id="nome" [(ngModel)]="tourOperator.nome">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="citta" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Citta</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" id="citta">
+                        <input type="text" class="form-control" id="citta" [(ngModel)]="tourOperator.citta">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="telefono" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Telefono</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" id="telefono">
+                        <input type="text" class="form-control" id="telefono" [(ngModel)]="tourOperator.telefono">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="societa" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Societa</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" id="societa">
+                        <input type="text" class="form-control" id="societa" [(ngModel)]="tourOperator.societa">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="provincia" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Provincia</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" id="provincia">
+                        <input type="text" class="form-control" id="provincia" [(ngModel)]="tourOperator.provincia">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="indirizzo" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Indirizzo</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" id="indirizzo">
+                        <input type="text" class="form-control" id="indirizzo" [(ngModel)]="tourOperator.indirizzo">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="cap" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">CAP</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="number" class="form-control" id="cap">
+                        <input type="number" class="form-control" id="cap" [(ngModel)]="tourOperator.cap">
                       </div>
                     </div>
-                    <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12">Crea/Aggiorna TourOperator</button>
+                    <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="createOrUpdateTourOperator('create')">Crea TourOperator</button>
                   </div>
                 </div>
               </div>

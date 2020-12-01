@@ -4,35 +4,44 @@
       <div class="row row-margin">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
           <div class="card mb-4">
-            <p class="mt-4 text-center" style="font-size: 24px; font-weight: bold;">Ticket Museale Standard</p>
+            <div class="card-body row">
+              <p class="mt-3 ml-3" style="font-size: 24px; font-weight: bold;">Ticket Museale Standard</p>
+            </div>
             <hr>
             <div class="card-body row mb-3">
               <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                 <div class="card card-selection">
                   <div class="card-body mt-2">
                     <div class="form-group row">
-                      <label for="luogoEmissione" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Luogo Emissione</label>
-                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control-plaintext" id="luogoEmissione" value="CASTELLO MURAT">
-                      </div>
-                    </div>
-                    <div class="form-group row">
                       <label for="tipologiaTicket" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Tipologia Ticket</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" id="tipologiaTicket">
+                        <select type="text" class="form-control" id="tipologiaTicket" [(ngModel)]="ticketStandard.ticketTipology">
+                          <option *ngFor="let ticketTipology of ticketTipologyList" [ngValue]="ticketTipology">{{ticketTipology.nome}}</option>
+                        </select>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="sito" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Sito</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" id="sito">
+                        <select type="text" class="form-control" id="sito" [(ngModel)]="ticketStandard.siti" multiple>
+                          <option *ngFor="let site of siteList" [ngValue]="site">{{site.nome}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="tourOperator" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">TourOperator</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <select type="text" class="form-control" id="tourOperator" [(ngModel)]="ticketStandard.tourOperator">
+                          <option value=""></option>
+                          <option *ngFor="let tourOperator of tourOperatorList" [ngValue]="tourOperator" >{{tourOperator.societa}}</option>
+                        </select>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="stampa" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Stampa Ticket</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <select class="form-control" id="stampa">
-                          <option value="single">MULTIPLA</option>
+                        <select class="form-control" id="stampa" [(ngModel)]="stampa">
+                          <option value="single" >MULTIPLA</option>
                           <option value="single">SINGOLA</option>
                         </select>
                       </div>
@@ -40,13 +49,13 @@
                     <div class="form-group row">
                       <label for="nazione" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Nazione</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <select class="form-control" id="nazione">
-                          <option value="italia">ITALIA</option>
-                          <option value="germania">GERMANIA</option>
-                          <option value="francia">FRANCIA</option>
-                          <option value="spagna">SPAGNA</option>
-                          <option value="russia">RUSSIA</option>
-                          <option value="altro">ALTRO</option>
+                        <select class="form-control" id="nazione" [(ngModel)]="ticketStandard.nazione">
+                          <option value="italia" ngValue="italia">ITALIA</option>
+                          <option value="germania" ngValue="germania">GERMANIA</option>
+                          <option value="francia" ngValue="francia">FRANCIA</option>
+                          <option value="spagna" ngValue="spagan">SPAGNA</option>
+                          <option value="russia" ngValue="russia">RUSSIA</option>
+                          <option value="altro" ngValue="altro">ALTRO</option>
                         </select>
                       </div>
                     </div>
@@ -59,20 +68,20 @@
                     <div class="form-group row">
                       <label for="numeroIngressi" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">N. Ingressi</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="number" class="form-control" id="numeroIngressi" >
+                        <input type="number" class="form-control" id="numeroIngressi" [(ngModel)]="ticketStandard.nIngressi" (change)="calculateTotalEuro()">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="totaleEuro" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Totale </label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <p type="text" class="form-control-plaintext" id="totaleEuro" value="totaleEuro">(€)</p>
+                        <p type="text" class="form-control-plaintext" id="totaleEuro" value="totaleEuro">{{totaleEuro}} €</p>
                       </div>
                     </div>
                   </div>
                 </div>
-                <button class="btn btn-outline-kairos mt-3 col-xl-12 col-lg-12 col-md-12 col-sm-12">Crea Ticket</button>
-                <button class="btn btn-outline-kairos mt-3 col-xl-12 col-lg-12 col-md-12 col-sm-12">Crea Ricevuta</button>
-                <button class="btn btn-outline-kairos mt-3 col-xl-12 col-lg-12 col-md-12 col-sm-12">Reset</button>
+                <button class="btn btn-outline-kairos mt-5 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="createOrUpdateTicketStandard()">Crea Ticket</button>
+                <button class="btn btn-outline-kairos mt-4 col-xl-12 col-lg-12 col-md-12 col-sm-12">Crea Ricevuta</button>
+                <button class="btn btn-outline-kairos mt-4 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="reset()">Reset</button>
               </div>
             </div>
           </div>

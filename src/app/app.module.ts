@@ -14,6 +14,7 @@ import { SitoComponent } from './components/anagrafica/sito/sito.component';
 import { TicketTipologyComponent } from './components/anagrafica/ticket-tipology/ticket-tipology.component';
 import { TourOperatorComponent } from './components/anagrafica/tour-operator/tour-operator.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,13 +28,14 @@ import {HttpClientModule} from '@angular/common/http';
     TicketTipologyComponent,
     TourOperatorComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    NgbModule,
-    FontAwesomeModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        NgbModule,
+        FontAwesomeModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

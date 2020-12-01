@@ -13,7 +13,15 @@ export class TicketTipologyComponent implements OnInit {
   faPencilAlt = faPencilAlt;
   faTrashAlt = faTrashAlt;
   ticketTipologyList: Array<TicketTipology>;
-  constructor(private ticketTipologyService: TicketTipologyService) { }
+  ticketTipology: TicketTipology;
+  ticketTipologyForUpdate: TicketTipology;
+  isPanelUpdateVisible = false;
+  isPanelCreateVisible = false;
+
+  constructor(private ticketTipologyService: TicketTipologyService) {
+    this.ticketTipology = new TicketTipology();
+    this.ticketTipologyForUpdate = new TicketTipology();
+  }
 
   ngOnInit(): void {
     this.getAllTicketTipologies();
@@ -22,7 +30,40 @@ export class TicketTipologyComponent implements OnInit {
     this.ticketTipologyService.getAllTicketTipologies().subscribe( res => {
       // @ts-ignore
       this.ticketTipologyList = res.body;
-      console.log('Available TourOperators: ', this.ticketTipologyList);
+      console.log('Available TicketTipologies: ', this.ticketTipologyList);
     });
+  }
+
+  createOrUpdateTicketTipology(action: string) {
+    let ticketToPost: TicketTipology;
+    if (action === 'update'){
+      ticketToPost = this.ticketTipologyForUpdate;
+    }else{
+      ticketToPost = this.ticketTipology;
+    }
+    this.ticketTipologyService.createOrUpdateTicketTipology(ticketToPost).subscribe( res => {
+      // @ts-ignore
+      console.log('Response: ', res.body);
+      // @ts-ignore
+      this.ticketTipology = {};
+      this.toggleCreateOrUpdatePanel(action);
+      this.getAllTicketTipologies();
+    }, error => {
+      alert(error.message.message);
+    });
+  }
+
+  moveForUpdate(ticketTipology: TicketTipology) {
+    this.ticketTipologyForUpdate = ticketTipology;
+    this.toggleCreateOrUpdatePanel('update');
+  }
+  toggleCreateOrUpdatePanel(action: string) {
+    if (action === 'update'){
+      this.isPanelCreateVisible = false;
+      this.isPanelUpdateVisible = !this.isPanelUpdateVisible;
+    }else{
+      this.isPanelUpdateVisible = false;
+      this.isPanelCreateVisible = !this.isPanelCreateVisible;
+    }
   }
 }
