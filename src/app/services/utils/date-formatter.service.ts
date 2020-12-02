@@ -5,7 +5,6 @@ import * as moment from 'moment';
   providedIn: 'root'
 })
 export class DateFormatterService {
-  // you can override any of the methods defined in the parent class
   // tslint:disable-next-line:typedef
   formateDateDHM(date: Date): string{
       return moment(date).format('DD/MM/yy HH:mm');

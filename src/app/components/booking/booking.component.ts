@@ -18,7 +18,7 @@ import {
 import { WeekViewHourSegment } from 'calendar-utils';
 import { fromEvent } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
-import { addDays, addMinutes, endOfWeek } from 'date-fns';
+import {addDays, addMinutes, endOfWeek, parseISO} from 'date-fns';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Subject} from 'rxjs';
 import {
@@ -32,6 +32,8 @@ import {
 } from 'date-fns';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {DateFormatterService} from '../../services/utils/date-formatter.service';
+import {BookingService} from '../../services/booking.service';
+import {Booking} from '../../models/booking';
 
 
 // tslint:disable-next-line:typedef
@@ -49,7 +51,7 @@ function ceilToNearest(amount: number, precision: number) {
   selector: 'app-booking',
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.css'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 // tslint:disable:typedef
 export class BookingComponent implements OnInit {
@@ -69,7 +71,8 @@ export class BookingComponent implements OnInit {
     event: CalendarEvent;
   };
 
-  constructor(private modal: NgbModal, private cdr: ChangeDetectorRef, public dateFormatter: DateFormatterService) {}
+  // tslint:disable-next-line:max-line-length
+  constructor(private modal: NgbModal, private cdr: ChangeDetectorRef, public dateFormatter: DateFormatterService, private bookingService: BookingService) {}
   ngOnInit(): void {
     this.getAllEvents();
   }
@@ -81,33 +84,18 @@ export class BookingComponent implements OnInit {
   }
 
   getAllEvents(): void{
-    this.events = [
-      {
-        start: subDays(startOfDay(new Date()), 1),
-        end: addDays(new Date(), 1),
-        title: 'A 3 day event',
-        allDay: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-        draggable: true,
-      },
-      {
-        start: startOfDay(new Date()),
-        title: 'An event with no end date',
-      },
-      {
-        start: subDays(endOfMonth(new Date()), 3),
-        end: addDays(endOfMonth(new Date()), 3),
-        title: 'A long event that spans 2 months',
-        allDay: true,
+    this.bookingService.getAllBookings().subscribe( res => {
+      this.events = [];
+      this.nextEvents = [];
+      // @ts-ignore
+      for (const event: CalendarEvent of res.body){
+        event.start = parseISO(event.start);
+        event.end = parseISO(event.end);
+        this.events.push(event);
+        this.verifyIfNextEvent(event);
+        document.getElementById('today').click();
       }
-    ];
-
-    for (const event of this.events){
-      this.verifyIfNextEvent(event);
-    }
+    });
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
@@ -153,7 +141,6 @@ export class BookingComponent implements OnInit {
   }
 
   addEventCustom(event: CalendarEvent): void {
-    console.log('event', event);
     /*this.events = [
       ...this.events,
       {
@@ -168,14 +155,27 @@ export class BookingComponent implements OnInit {
         },
       },
     ];*/
-    this.verifyIfNextEvent(event);
-    this.modal.dismissAll();
+    console.log('event', event);
+    // @ts-ignore
+    const booking: Booking = new Booking();
+    booking.title = event.title;
+    booking.start = event.start;
+    booking.end = event.end;
+    this.bookingService.createOrUpdateBooking(booking).subscribe( res => {
+      console.log(res.body);
+      this.getAllEvents();
+      this.modal.dismissAll();
+    });
   }
 
 
   deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter((event) => event !== eventToDelete);
-    this.modal.dismissAll();
+    // @ts-ignore
+    this.bookingService.deleteBooking(eventToDelete).subscribe(res => {
+      console.log(res.body);
+      this.getAllEvents();
+      this.modal.dismissAll();
+    });
   }
 
   setView(view: CalendarView) {

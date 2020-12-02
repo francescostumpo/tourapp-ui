@@ -3,6 +3,6 @@ export class Booking {
   _id: string;
   _rev: string;
   title: string;
-  start: string;
-  end: string;
+  start: Date;
+  end: Date;
 }
