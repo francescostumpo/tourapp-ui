@@ -14,7 +14,7 @@ export class TicketingComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  goToTicketStandardView() {
-    this.router.navigate(['ticketStandard'], {relativeTo: this.route} );
+  goToView(location: string) {
+    this.router.navigate([location], {relativeTo: this.route} );
   }
 }

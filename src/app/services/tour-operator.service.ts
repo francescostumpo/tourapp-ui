@@ -23,4 +23,10 @@ export class TourOperatorService {
     return this.httpClient
       .post<any>(environment.tourappBackendUrl + '/api/to/createOrUpdateTourOperator', tourOperator, {headers, observe: 'response'});
   }
+  // tslint:disable-next-line:ban-types
+  deleteTourOperator(tourOperator: TourOperator): Observable<HttpResponse<Object>>{
+    const headers = new HttpHeaders({Authorization: 'Bearer ey'});
+    return this.httpClient
+      .post<any>(environment.tourappBackendUrl + '/api/to/deleteTourOperator', tourOperator, {headers, observe: 'response'});
+  }
 }

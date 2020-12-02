@@ -66,4 +66,12 @@ export class TicketTipologyComponent implements OnInit {
       this.isPanelCreateVisible = !this.isPanelCreateVisible;
     }
   }
+
+  deleteTicketTipology(ticketTipology: TicketTipology) {
+    this.ticketTipologyService.deleteTicketTipology(ticketTipology).subscribe( res => {
+      // @ts-ignore
+      alert(res.body.message);
+      this.getAllTicketTipologies();
+    });
+  }
 }

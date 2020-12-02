@@ -30,7 +30,7 @@
                         <td>{{i + 1}}</td>
                         <td>{{ticketTipology.nome}}</td>
                         <td>{{ticketTipology.prezzo}} &nbsp;€</td>
-                        <td class="text-center"><span style="cursor: pointer" ><fa-icon [icon]="faPencilAlt" (click)="moveForUpdate(ticketTipology)"></fa-icon></span> &nbsp; <span style="cursor: pointer" ><fa-icon [icon]="faTrashAlt"></fa-icon></span></td>
+                        <td class="text-center"><span style="cursor: pointer" ><fa-icon [icon]="faPencilAlt" (click)="moveForUpdate(ticketTipology)"></fa-icon></span> &nbsp; <span style="cursor: pointer" ><fa-icon [icon]="faTrashAlt" (click)="deleteTicketTipology(ticketTipology)"></fa-icon></span></td>
                       </tr>
                       </tbody>
                     </table>

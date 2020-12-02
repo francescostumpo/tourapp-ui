@@ -15,6 +15,12 @@ import { TicketTipologyComponent } from './components/anagrafica/ticket-tipology
 import { TourOperatorComponent } from './components/anagrafica/tour-operator/tour-operator.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { TicketStandardValidateComponent } from './components/ticketing/ticket-standard-validate/ticket-standard-validate.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { BookingComponent } from './components/booking/booking.component';
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -26,15 +32,19 @@ import {FormsModule} from '@angular/forms';
     AnagraficaComponent,
     SitoComponent,
     TicketTipologyComponent,
-    TourOperatorComponent
+    TourOperatorComponent,
+    TicketStandardValidateComponent,
+    BookingComponent
   ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         HttpClientModule,
         AppRoutingModule,
         NgbModule,
         FontAwesomeModule,
-        FormsModule
+        FormsModule,
+        CalendarModule.forRoot({ provide: DateAdapter, useFactory:  adapterFactory})
     ],
   providers: [],
   bootstrap: [AppComponent]

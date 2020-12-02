@@ -23,4 +23,10 @@ export class TicketTipologyService {
     return this.httpClient
       .post<any>(environment.tourappBackendUrl + '/api/tt/createOrUpdateTicketTipology', ticketTipology, {headers, observe: 'response'});
   }
+
+  deleteTicketTipology(ticketTipology: TicketTipology): Observable<HttpResponse<Object>>{
+    const headers = new HttpHeaders({Authorization: 'Bearer ey'});
+    return this.httpClient
+      .post<any>(environment.tourappBackendUrl + '/api/tt/deleteTicketTipology', ticketTipology, {headers, observe: 'response'});
+  }
 }

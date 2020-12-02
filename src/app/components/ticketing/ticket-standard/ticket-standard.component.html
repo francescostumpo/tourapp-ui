@@ -15,7 +15,7 @@
                     <div class="form-group row">
                       <label for="tipologiaTicket" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Tipologia Ticket</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <select type="text" class="form-control" id="tipologiaTicket" [(ngModel)]="ticketStandard.ticketTipology">
+                        <select type="text" class="form-control" id="tipologiaTicket" [(ngModel)]="ticketStandard.tipologiaTicket">
                           <option *ngFor="let ticketTipology of ticketTipologyList" [ngValue]="ticketTipology">{{ticketTipology.nome}}</option>
                         </select>
                       </div>
@@ -23,9 +23,9 @@
                     <div class="form-group row">
                       <label for="sito" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Sito</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <select type="text" class="form-control" id="sito" [(ngModel)]="ticketStandard.siti" multiple>
-                          <option *ngFor="let site of siteList" [ngValue]="site">{{site.nome}}</option>
-                        </select>
+                        <div *ngFor="let site of siteList" >
+                          <input type="checkbox" id="sito" class="sitoCheckbox" (change)="selectSite(site)" > &nbsp;{{site.nome}}
+                        </div>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -41,8 +41,8 @@
                       <label for="stampa" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Stampa Ticket</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <select class="form-control" id="stampa" [(ngModel)]="stampa">
-                          <option value="single" >MULTIPLA</option>
-                          <option value="single">SINGOLA</option>
+                          <option value="multiple" >SINGOLA</option>
+                          <option value="single">MULTIPLA</option>
                         </select>
                       </div>
                     </div>
@@ -50,12 +50,12 @@
                       <label for="nazione" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Nazione</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <select class="form-control" id="nazione" [(ngModel)]="ticketStandard.nazione">
-                          <option value="italia" ngValue="italia">ITALIA</option>
-                          <option value="germania" ngValue="germania">GERMANIA</option>
-                          <option value="francia" ngValue="francia">FRANCIA</option>
-                          <option value="spagna" ngValue="spagan">SPAGNA</option>
-                          <option value="russia" ngValue="russia">RUSSIA</option>
-                          <option value="altro" ngValue="altro">ALTRO</option>
+                          <option value="ITALIA" ngValue="ITALIA">ITALIA</option>
+                          <option value="GERMANIA" ngValue="GERMANIA">GERMANIA</option>
+                          <option value="FRANCIA" ngValue="FRANCIA">FRANCIA</option>
+                          <option value="SPAGNA" ngValue="SPAGNA">SPAGNA</option>
+                          <option value="RUSSIA" ngValue="RUSSIA">RUSSIA</option>
+                          <option value="ALTRO" ngValue="ALTRO">ALTRO</option>
                         </select>
                       </div>
                     </div>
@@ -79,9 +79,9 @@
                     </div>
                   </div>
                 </div>
-                <button class="btn btn-outline-kairos mt-5 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="createOrUpdateTicketStandard()">Crea Ticket</button>
-                <button class="btn btn-outline-kairos mt-4 col-xl-12 col-lg-12 col-md-12 col-sm-12">Crea Ricevuta</button>
-                <button class="btn btn-outline-kairos mt-4 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="reset()">Reset</button>
+                <button class="btn btn-outline-kairos mt-5 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="createOrUpdateTicketStandard()" [disabled]="isTotaleEuroNotPresent">Crea Ticket</button>
+                <button class="btn btn-outline-kairos mt-3 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="generateFattura()" [disabled]="isTicketNotCreatedYet">Crea Ricevuta</button>
+                <button class="btn btn-outline-kairos mt-3 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="reset()">Reset</button>
               </div>
             </div>
           </div>

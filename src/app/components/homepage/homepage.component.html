@@ -4,21 +4,54 @@
   <section class="bg-section">
     <div class="container-fluid">
       <div class="row row-margin">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-          <div class="card text-center mb-4">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" >
+          <div class="card text-center mb-4" *ngIf="isPanelLuogoEmissione">
             <p class="header-subtitle mt-4">In quale sito ti trovi al momento?</p>
             <div class="card-body row mb-3">
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                <div class="card card-selection" style="cursor: pointer">
+                <div class="card card-selection" style="cursor: pointer" (click)="setLuogoEmissione('castello', 'Castello Murat')">
                   <div class="card-body text-center mt-2">
                     <p class="mt-2" style="font-size: 20px;">Castello Murat</p>
                   </div>
                 </div>
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                <div class="card card-selection" style="cursor: pointer">
+                <div class="card card-selection" style="cursor: pointer" (click)="setLuogoEmissione('piedigrotta', 'Chiesetta Piedigrotta')">
                   <div class="card-body text-center mt-2" >
                     <p class="mt-2" style="font-size: 20px; cursor: pointer">Chiesetta Piedigrotta</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card text-center mb-4" *ngIf="isPanelRecapActivities">
+            <p class="header-subtitle mt-4">Benvenuto, la tua postazione di lavoro è: {{luogoEmissione}}</p>
+            <div class="card-body row mb-3">
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card card-selection" style="cursor: pointer" (click)="goToView('ticketing/ticketStandard')">
+                  <div class="card-body text-center mt-2" >
+                    <p class="mt-2" style="font-size: 20px;"><fa-icon [icon]="faBolt"></fa-icon> &nbsp; Genera Ticket Museale Standard &nbsp; <fa-icon [icon]="faBolt"></fa-icon></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card card-selection" style="cursor: pointer" (click)="goToView('ticketing/verifyTicketStandard')">
+                  <div class="card-body text-center mt-2" >
+                    <p class="mt-2" style="font-size: 20px; cursor: pointer"><fa-icon [icon]="faBolt"></fa-icon> &nbsp; Verifica Ticket Museale Standard &nbsp; <fa-icon [icon]="faBolt"></fa-icon></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card card-selection mt-3" style="cursor: pointer" (click)="goToView('ticketing/ticketVirtual')">
+                  <div class="card-body text-center mt-2" >
+                    <p class="mt-2" style="font-size: 20px; cursor: pointer"><fa-icon [icon]="faBolt"></fa-icon> &nbsp; Genera Ticket VirtualTour &nbsp; <fa-icon [icon]="faBolt"></fa-icon></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card card-selection mt-3" style="cursor: pointer">
+                  <div class="card-body text-center mt-2" >
+                    <p class="mt-2" style="font-size: 20px; cursor: pointer" (click)="setPanelLuogoEmissione()">Cambia postazione di lavoro</p>
                   </div>
                 </div>
               </div>

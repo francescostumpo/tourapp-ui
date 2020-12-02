@@ -68,4 +68,12 @@ export class SitoComponent implements OnInit {
       this.isPanelCreateVisible = !this.isPanelCreateVisible;
     }
   }
+
+  deleteSite(site: Site) {
+    this.sitoService.deleteSite(site).subscribe( res => {
+      // @ts-ignore
+      alert(res.body.message);
+      this.getAllSites();
+    });
+  }
 }

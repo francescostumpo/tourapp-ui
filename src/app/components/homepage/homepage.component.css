@@ -1,15 +1,3 @@
-.bg-img{
-  height: 120vh;
-  padding: 0;
-  width: 100%;
-  background: url('../../../assets/img/discovering-pizzo.jpg') no-repeat center center fixed;
-  opacity: 85%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
 .header-title{
   padding-top: 10rem;
   font-weight: bold;
@@ -33,8 +21,7 @@
   padding: 0.7rem;
 }
 
-
 .card-selection:hover{
-  border: 4px solid #fed701;
+  border: 3px solid #fed701;
   font-weight: bold;
 }

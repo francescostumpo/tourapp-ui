@@ -24,4 +24,12 @@ export class SitoService {
     return this.httpClient
       .post<any>(environment.tourappBackendUrl + '/api/si/createOrUpdateSite', site, {headers, observe: 'response'});
   }
+
+  // tslint:disable-next-line:ban-types
+  deleteSite(site: Site): Observable<HttpResponse<Object>>{
+    const headers = new HttpHeaders({Authorization: 'Bearer ey'});
+    return this.httpClient
+      // used POST because in ANGULAR there's no body
+      .post<any>(environment.tourappBackendUrl + '/api/si/deleteSite', site, {headers, observe: 'response'});
+  }
 }

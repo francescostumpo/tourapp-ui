@@ -3,6 +3,7 @@ import {faPencilAlt, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {TourOperator} from '../../../models/tour-operator';
 import {TourOperatorService} from '../../../services/tour-operator.service';
 import {TicketTipology} from '../../../models/ticket-tipology';
+import {Site} from '../../../models/site';
 
 @Component({
   selector: 'app-tour-operator',
@@ -67,6 +68,14 @@ export class TourOperatorComponent implements OnInit {
       this.isPanelUpdateVisible = false;
       this.isPanelCreateVisible = !this.isPanelCreateVisible;
     }
+  }
+
+  deleteTourOperator(tourOperator: TourOperator) {
+    this.tourOperatorService.deleteTourOperator(tourOperator).subscribe( res => {
+      // @ts-ignore
+      alert(res.body.message);
+      this.getAllTourOperators();
+    });
   }
 
 }

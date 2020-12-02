@@ -30,7 +30,7 @@
                           <td>{{i + 1}}</td>
                           <td>{{site.nome}}</td>
                           <td>{{site.descrizioneBreve}}</td>
-                          <td class="text-center"><span style="cursor: pointer" ><fa-icon [icon]="faPencilAlt" (click)="moveForUpdate(site)"></fa-icon></span> &nbsp; <span style="cursor: pointer" ><fa-icon [icon]="faTrashAlt"></fa-icon></span></td>
+                          <td class="text-center"><span style="cursor: pointer" ><fa-icon [icon]="faPencilAlt" (click)="moveForUpdate(site)"></fa-icon></span> &nbsp; <span style="cursor: pointer" ><fa-icon [icon]="faTrashAlt" (click)="deleteSite(site)"></fa-icon></span></td>
                         </tr>
                       </tbody>
                     </table>
@@ -52,7 +52,7 @@
                         <input type="text" class="form-control" id="descrizioneBreveUpdate" [(ngModel)]="siteForUpdate.descrizioneBreve">
                       </div>
                     </div>
-                    <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="createOrUpdateSite('update')">Crea Sito</button>
+                    <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="createOrUpdateSite('update')">Aggiorna Sito</button>
                   </div>
                 </div>
                 <div class="card card-selection" *ngIf="isPanelCreateVisible">

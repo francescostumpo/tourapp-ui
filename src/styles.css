@@ -2,11 +2,34 @@
 .from-fixed-navbar{
   padding-top: 5rem;
 }
+.bg-img{
+  height: 130vh;
+  padding: 0;
+  width: 100%;
+  background: url('assets/img/discovering-pizzo.jpg') no-repeat center center fixed;
+  opacity: 85%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .bg-img-ticket{
   height: 120vh;
   padding: 0;
   width: 100%;
   background: url('assets/img/biglietteria.jpg') no-repeat center center fixed;
+  opacity: 85%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.bg-img-booking{
+  height: 150vh;
+  padding: 0;
+  width: 100%;
+  background: url('assets/img/calendar.jpg') no-repeat center center fixed;
   opacity: 85%;
   -webkit-background-size: cover;
   -moz-background-size: cover;

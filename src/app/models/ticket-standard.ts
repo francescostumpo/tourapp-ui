@@ -7,7 +7,7 @@ export class TicketStandard {
   _id: string;
   _rev: string;
   ticketId: string;
-  ticketTipology: TicketTipology;
+  tipologiaTicket: TicketTipology;
   siti: Array<Site>;
   tourOperator: TourOperator;
   nIngressi: number;

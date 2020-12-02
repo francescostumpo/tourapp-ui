@@ -30,7 +30,7 @@
                         <td>{{i + 1}}</td>
                         <td>{{tourOperator.nome}}</td>
                         <td>{{tourOperator.societa}}</td>
-                        <td class="text-center"><span style="cursor: pointer" ><fa-icon [icon]="faPencilAlt" (click)="moveForUpdate(tourOperator)"></fa-icon></span> &nbsp; <span style="cursor: pointer" ><fa-icon [icon]="faTrashAlt"></fa-icon></span></td>
+                        <td class="text-center"><span style="cursor: pointer" ><fa-icon [icon]="faPencilAlt" (click)="moveForUpdate(tourOperator)"></fa-icon></span> &nbsp; <span style="cursor: pointer" ><fa-icon [icon]="faTrashAlt" (click)="deleteTourOperator(tourOperator)"></fa-icon></span></td>
                       </tr>
                       </tbody>
                     </table>
