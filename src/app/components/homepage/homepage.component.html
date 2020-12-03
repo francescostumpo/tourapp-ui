@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="card text-center mb-4" *ngIf="isPanelRecapActivities">
-            <p class="header-subtitle mt-4">Benvenuto, la tua postazione di lavoro è: {{luogoEmissione}}</p>
+            <p class="header-subtitle mt-4">Benvenuto, la tua postazione di lavoro è: {{luogoEmissione.toUpperCase()}}</p>
             <div class="card-body row mb-3">
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                 <div class="card card-selection" style="cursor: pointer" (click)="goToView('ticketing/ticketStandard')">
@@ -51,7 +51,7 @@
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                 <div class="card card-selection mt-3" style="cursor: pointer">
                   <div class="card-body text-center mt-2" >
-                    <p class="mt-2" style="font-size: 20px; cursor: pointer" (click)="setPanelLuogoEmissione()">Cambia postazione di lavoro</p>
+                    <p class="mt-2" style="font-size: 20px;" (click)="setPanelLuogoEmissione()">Cambia postazione di lavoro</p>
                   </div>
                 </div>
               </div>

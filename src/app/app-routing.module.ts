@@ -9,6 +9,7 @@ import {TicketTipologyComponent} from './components/anagrafica/ticket-tipology/t
 import {TourOperatorComponent} from './components/anagrafica/tour-operator/tour-operator.component';
 import {TicketStandardValidateComponent} from './components/ticketing/ticket-standard-validate/ticket-standard-validate.component';
 import {BookingComponent} from './components/booking/booking.component';
+import {ReportingComponent} from './components/reporting/reporting.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'tourApp', pathMatch: 'full'},
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'tourApp/ticketing', component: TicketingComponent},
   { path: 'tourApp/ticketing/ticketStandard', component: TicketStandardComponent},
   { path: 'tourApp/ticketing/verifyTicketStandard', component: TicketStandardValidateComponent},
-  { path: 'tourApp/booking', component: BookingComponent}
+  { path: 'tourApp/booking', component: BookingComponent},
+  { path: 'tourApp/reporting', component: ReportingComponent}
 ];
 
 @NgModule({

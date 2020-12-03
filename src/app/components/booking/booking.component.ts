@@ -141,20 +141,6 @@ export class BookingComponent implements OnInit {
   }
 
   addEventCustom(event: CalendarEvent): void {
-    /*this.events = [
-      ...this.events,
-      {
-        title: 'New event',
-        start: event.start,
-        end: event.end,
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-      },
-    ];*/
     console.log('event', event);
     // @ts-ignore
     const booking: Booking = new Booking();
@@ -174,6 +160,12 @@ export class BookingComponent implements OnInit {
     this.bookingService.deleteBooking(eventToDelete).subscribe(res => {
       console.log(res.body);
       this.getAllEvents();
+      this.modal.dismissAll();
+    }, error => {
+      console.log(error.message);
+      this.events = this.events.filter((value, index, arr) => {
+        return value !== eventToDelete;
+      });
       this.modal.dismissAll();
     });
   }

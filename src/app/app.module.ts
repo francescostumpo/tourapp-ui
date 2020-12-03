@@ -20,6 +20,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { BookingComponent } from './components/booking/booking.component';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ReportingComponent } from './components/reporting/reporting.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     TicketTipologyComponent,
     TourOperatorComponent,
     TicketStandardValidateComponent,
-    BookingComponent
+    BookingComponent,
+    ReportingComponent
   ],
     imports: [
         BrowserModule,

@@ -9,14 +9,14 @@
 
   <div class="navbar-nav ml-auto" id="navbarSupportedContent">
     <ul ngbNav class="mr-auto">
-      <li ngbNavItem>
+      <li ngbNavItem class="mr-3">
         <a ngbNavLink routerLink="/tourApp" routerLinkActive="link-active" [routerLinkActiveOptions]="{exact: true}" style="color: white">Homepage<span class="sr-only">(current)</span></a>
       </li>
-      <li ngbNavItem>
+      <li ngbNavItem class="mr-3">
         <a ngbNavLink routerLink="/tourApp/ticketing" routerLinkActive="link-active" style="color: white">Ticketing</a>
       </li>
-      <li ngbNavItem>
-        <a ngbNavLink routerLink="/tourApp/reporting" routerLinkActive="link-active" class="disabled" disabled="">Reporting</a>
+      <li ngbNavItem class="mr-3">
+        <a ngbNavLink routerLink="/tourApp/reporting" routerLinkActive="link-active" style="color: white">Reporting</a>
       </li>
       <!--<li ngbNavItem ngbDropdown style="cursor: pointer">
         <a class="dropdown-toggle" id="navbarDropdown" ngbNavLink ngbDropdownToggle style="color: white">
@@ -29,11 +29,19 @@
           <a ngbDropdownItem href="#">Something else here</a>
         </div>
       </li>-->
-      <li ngbNavItem>
+      <li ngbNavItem class="mr-3">
         <a ngbNavLink routerLink="/tourApp/booking" routerLinkActive="link-active" style="color: white">Booking</a>
       </li>
-      <li ngbNavItem>
+      <li ngbNavItem class="mr-3">
         <a ngbNavLink routerLink="/tourApp/anagrafica" routerLinkActive="link-active" style="color: white">Anagrafica</a>
+      </li>
+      <li ngbNavItem ngbDropdown class="mr-3">
+        <a class="dropdown-toggle" ngbNavLink ngbDropdownToggle  style="color: white" >| &nbsp; &nbsp; {{getLocation()}}</a>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdown">
+          <a ngbDropdownItem style="cursor: pointer" (click)="setLocation('castello')">CASTELLO</a>
+          <div class="dropdown-divider"></div>
+          <a ngbDropdownItem style="cursor: pointer" (click)="setLocation('piedigrotta')">PIEDIGROTTA</a>
+        </div>
       </li>
     </ul>
     <!--<form class="form-inline my-2 my-lg-0">

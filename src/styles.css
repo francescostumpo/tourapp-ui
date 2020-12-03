@@ -36,6 +36,17 @@
   -o-background-size: cover;
   background-size: cover;
 }
+.bg-img-reporting{
+  height: 120vh;
+  padding: 0;
+  width: 100%;
+  background: url('assets/img/reporting.jpg') no-repeat center center fixed;
+  opacity: 85%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .bg-img-anagrafica{
   height: 120vh;
   padding: 0;

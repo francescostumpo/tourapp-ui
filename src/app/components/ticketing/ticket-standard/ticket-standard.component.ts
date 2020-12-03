@@ -9,6 +9,8 @@ import {TicketStandard} from '../../../models/ticket-standard';
 import {TicketStandardService} from '../../../services/ticket-standard.service';
 import {DownloadService} from '../../../services/download.service';
 import {tick} from '@angular/core/testing';
+import {Subscription} from 'rxjs';
+import {LocationService} from '../../../services/location.service';
 
 @Component({
   selector: 'app-ticket-standard',
@@ -33,13 +35,14 @@ export class TicketStandardComponent implements OnInit {
     private sitoService: SitoService,
     private ticketTipologyService: TicketTipologyService,
     private ticketStandardService: TicketStandardService,
-    private downloadService: DownloadService) {
+    private downloadService: DownloadService,
+    private locationService: LocationService) {
     this.ticketStandard = new TicketStandard();
     this.siteListSupport = new Array<Site>();
-    this.luogoEmissione = sessionStorage.getItem('luogoEmissione');
   }
 
   ngOnInit(): void {
+    this.luogoEmissione = this.locationService.getLocation();
     this.tourOperatorList = JSON.parse(sessionStorage.getItem('tourOperators'));
     this.siteList = JSON.parse(sessionStorage.getItem('sites'));
     this.ticketTipologyList = JSON.parse(sessionStorage.getItem('ticketTipologies'));
@@ -150,4 +153,5 @@ export class TicketStandardComponent implements OnInit {
     }
     this.ticketStandard.siti = this.siteListSupport;
   }
+
 }

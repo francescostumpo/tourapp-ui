@@ -1,0 +1,60 @@
+<div class="bg-img-reporting">
+  <section class="from-fixed-navbar">
+    <div class="container-fluid">
+      <div class="row row-margin">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <div class="card mb-4">
+            <div class="card-body row">
+              <p class="mt-3 ml-3" style="font-size: 24px; font-weight: bold;">Reportistica</p>
+            </div>
+            <hr>
+            <div class="card-body row mb-3">
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card card-selection">
+                  <div class="card-body mt-2">
+                    <p style="font-weight: bold">Estrazione Ticket Museali Standard</p>
+                    <div class="form-group row">
+                      <label for="dataDATS" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">DA</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="datetime-local" class="form-control" id="dataDATS" [(ngModel)]="dataDATS" (change)="checkTSDates()">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="dataATS" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">A</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="datetime-local" class="form-control" id="dataATS" [(ngModel)]="dataATS" (change)="checkTSDates()">
+                      </div>
+                    </div>
+                    <button class="btn btn-outline-kairos col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="downloadReport('ts')" [disabled]="areDatesTSNotPresent">Estrai</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" *ngIf="false">
+                <div class="card card-selection">
+                  <div class="card-body mt-2">
+                    <p style="font-weight: bold">Estrazione Ticket VirtualTour</p>
+                    <div class="form-group row">
+                      <label for="dataDATV" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">DA</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="datetime-local" class="form-control" id="dataDATV" [(ngModel)]="dataDATV" (change)="checkTVDates()">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="dataATV" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">A</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="datetime-local" class="form-control" id="dataATV" [(ngModel)]="dataATV" (change)="checkTVDates()">
+                      </div>
+                    </div>
+                    <button class="btn btn-outline-kairos col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="downloadReport('tv')" [disabled]="areDatesTVNotPresent">Estrai</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
