@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {faBolt} from '@fortawesome/free-solid-svg-icons';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LocationService} from '../../services/location.service';
+import {AuthService} from '../../services/auth.service';
 
 // @ts-ignore
 // @ts-ignore
@@ -15,7 +16,9 @@ export class HomepageComponent implements OnInit {
   isPanelLuogoEmissione = true;
   isPanelRecapActivities = false;
   luogoEmissione: string;
-  constructor(private router: Router, private route: ActivatedRoute, private locationService: LocationService) {
+  userName: string;
+
+  constructor(private router: Router, private route: ActivatedRoute, private locationService: LocationService, private authService: AuthService) {
       locationService.locationAnnounced$.subscribe((locationName) => {
         this.luogoEmissione = locationName;
       });
@@ -31,6 +34,8 @@ export class HomepageComponent implements OnInit {
       this.isPanelLuogoEmissione = true;
       this.isPanelRecapActivities = false;
     }
+
+    this.userName = this.authService.getUsername();
   }
   setLuogoEmissione(luogoEmissione: string, luogoEmissioneNome: string): void {
     this.luogoEmissione = luogoEmissione;
@@ -44,6 +49,8 @@ export class HomepageComponent implements OnInit {
   }
 
   goToView(location: string): void {
-    this.router.navigate([location], {relativeTo: this.route} );
+    this.router.navigate(['tourApp/' + location] );
   }
+
+
 }

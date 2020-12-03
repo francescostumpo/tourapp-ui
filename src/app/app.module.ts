@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ApplicationRef, DoBootstrap, NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +13,7 @@ import { AnagraficaComponent } from './components/anagrafica/anagrafica.componen
 import { SitoComponent } from './components/anagrafica/sito/sito.component';
 import { TicketTipologyComponent } from './components/anagrafica/ticket-tipology/ticket-tipology.component';
 import { TourOperatorComponent } from './components/anagrafica/tour-operator/tour-operator.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { TicketStandardValidateComponent } from './components/ticketing/ticket-standard-validate/ticket-standard-validate.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -21,7 +21,11 @@ import { BookingComponent } from './components/booking/booking.component';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ReportingComponent } from './components/reporting/reporting.component';
+import { LoginComponent } from './components/login/login.component';
+import {AuthService} from './services/auth.service';
+import {TokenInterceptor} from './token-interceptor';
 
+const authService = new AuthService();
 
 @NgModule({
   declarations: [
@@ -36,7 +40,8 @@ import { ReportingComponent } from './components/reporting/reporting.component';
     TourOperatorComponent,
     TicketStandardValidateComponent,
     BookingComponent,
-    ReportingComponent
+    ReportingComponent,
+    LoginComponent
   ],
     imports: [
         BrowserModule,
@@ -48,7 +53,24 @@ import { ReportingComponent } from './components/reporting/reporting.component';
         FormsModule,
         CalendarModule.forRoot({ provide: DateAdapter, useFactory:  adapterFactory})
     ],
-  providers: [],
+  providers: [{
+    provide: AuthService,
+    useValue: authService
+  },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule implements DoBootstrap{
+  ngDoBootstrap(appRef: ApplicationRef): void {
+    authService.init().then(r => {
+      console.log('[ngDoBootstrap] bootstrap app');
+      appRef.bootstrap(AppComponent);
+    }).catch(
+      error => console.log(error)
+    );
+  } }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ReportingService} from '../../services/reporting.service';
 import {DownloadService} from '../../services/download.service';
 import {DateFormatterService} from '../../services/utils/date-formatter.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-reporting',
@@ -17,7 +18,7 @@ export class ReportingComponent implements OnInit {
   areDatesTVNotPresent = true;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private reportingService: ReportingService, private downloadService: DownloadService, private dateFormatterService: DateFormatterService) { }
+  constructor(private reportingService: ReportingService, private downloadService: DownloadService, private dateFormatterService: DateFormatterService, public authService: AuthService) { }
 
   ngOnInit(): void {
     this.checkTSDates();

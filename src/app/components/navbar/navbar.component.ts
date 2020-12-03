@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LocationService} from '../../services/location.service';
 import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +13,7 @@ export class NavbarComponent implements OnInit {
   luogoEmissione: string;
   subscription: Subscription;
 
-  constructor(private locationService: LocationService) {
+  constructor(private locationService: LocationService, public authService: AuthService) {
     this.subscription = locationService.locationAnnounced$.subscribe(
       locationName => {
         this.luogoEmissione = locationName;
@@ -37,5 +39,14 @@ export class NavbarComponent implements OnInit {
 
   setLocation(castello: string): void {
     this.locationService.changeLocation(castello);
+  }
+
+  // tslint:disable-next-line:typedef
+  isNotPortal() {
+    const location = window.location.pathname;
+    if (location === '/tourApp'){
+      return false;
+    }
+    return true;
   }
 }

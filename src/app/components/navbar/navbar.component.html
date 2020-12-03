@@ -7,15 +7,15 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="navbar-nav ml-auto" id="navbarSupportedContent">
+  <div class="navbar-nav ml-auto" id="navbarSupportedContent" *ngIf="isNotPortal()">
     <ul ngbNav class="mr-auto">
-      <li ngbNavItem class="mr-3">
-        <a ngbNavLink routerLink="/tourApp" routerLinkActive="link-active" [routerLinkActiveOptions]="{exact: true}" style="color: white">Homepage<span class="sr-only">(current)</span></a>
+      <li ngbNavItem class="mr-3" *ngIf="authService.isEveryOneButNotOpComunale()">
+        <a ngbNavLink routerLink="/tourApp/homepage" routerLinkActive="link-active" [routerLinkActiveOptions]="{exact: true}" style="color: white">Homepage<span class="sr-only">(current)</span></a>
       </li>
-      <li ngbNavItem class="mr-3">
+      <li ngbNavItem class="mr-3" *ngIf="authService.isEveryOneButNotOpComunale()">
         <a ngbNavLink routerLink="/tourApp/ticketing" routerLinkActive="link-active" style="color: white">Ticketing</a>
       </li>
-      <li ngbNavItem class="mr-3">
+      <li ngbNavItem class="mr-3" *ngIf="authService.isAdminOrOpComunale()">
         <a ngbNavLink routerLink="/tourApp/reporting" routerLinkActive="link-active" style="color: white">Reporting</a>
       </li>
       <!--<li ngbNavItem ngbDropdown style="cursor: pointer">
@@ -29,13 +29,13 @@
           <a ngbDropdownItem href="#">Something else here</a>
         </div>
       </li>-->
-      <li ngbNavItem class="mr-3">
+      <li ngbNavItem class="mr-3" *ngIf="authService.isAdmin()">
         <a ngbNavLink routerLink="/tourApp/booking" routerLinkActive="link-active" style="color: white">Booking</a>
       </li>
-      <li ngbNavItem class="mr-3">
+      <li ngbNavItem class="mr-3" *ngIf="authService.isAdmin()">
         <a ngbNavLink routerLink="/tourApp/anagrafica" routerLinkActive="link-active" style="color: white">Anagrafica</a>
       </li>
-      <li ngbNavItem ngbDropdown class="mr-3">
+      <li ngbNavItem ngbDropdown class="mr-3" *ngIf="authService.isEveryOneButNotOpComunale()">
         <a class="dropdown-toggle" ngbNavLink ngbDropdownToggle  style="color: white" >| &nbsp; &nbsp; {{getLocation()}}</a>
         <div ngbDropdownMenu aria-labelledby="navbarDropdown">
           <a ngbDropdownItem style="cursor: pointer" (click)="setLocation('castello')">CASTELLO</a>
