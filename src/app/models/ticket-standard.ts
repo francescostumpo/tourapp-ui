@@ -13,5 +13,6 @@ export class TicketStandard {
   nIngressi: number;
   nazione: string;
   dataEmissione: string;
+  luogoEmissione: string;
   totaleEuro: number;
 }

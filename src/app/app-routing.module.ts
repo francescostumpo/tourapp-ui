@@ -16,17 +16,17 @@ import {LoginComponent} from './components/login/login.component';
 const routes: Routes = [
   { path: '', redirectTo: 'tourApp', pathMatch: 'full'},
   { path: 'tourApp', component: LoginComponent, pathMatch: 'full', canActivate: [AuthGuardService]},
-  { path: 'tourApp/homepage', component: HomepageComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_biglietteria']}},
+  { path: 'tourApp/homepage', component: HomepageComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_biglietteria', 'operatore_biglietteria_comunale']}},
   // tslint:disable-next-line:max-line-length
   { path: 'tourApp/anagrafica', component: AnagraficaComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore']} },
   { path: 'tourApp/anagrafica/siti', component: SitoComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore']} },
   // tslint:disable-next-line:max-line-length
   { path: 'tourApp/anagrafica/tipologiaTickets', component: TicketTipologyComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore']} },
   { path: 'tourApp/anagrafica/tourOperators', component: TourOperatorComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore']} },
-  { path: 'tourApp/ticketing', component: TicketingComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_biglietteria']}},
-  { path: 'tourApp/ticketing/ticketStandard', component: TicketStandardComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_biglietteria']}},
+  { path: 'tourApp/ticketing', component: TicketingComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_biglietteria', 'operatore_biglietteria_comunale']}},
+  { path: 'tourApp/ticketing/ticketStandard', component: TicketStandardComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_biglietteria', 'operatore_biglietteria_comunale']}},
   // tslint:disable-next-line:max-line-length
-  { path: 'tourApp/ticketing/verifyTicketStandard', component: TicketStandardValidateComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_biglietteria']}},
+  { path: 'tourApp/ticketing/verifyTicketStandard', component: TicketStandardValidateComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_biglietteria', 'operatore_biglietteria_comunale']}},
   { path: 'tourApp/booking', component: BookingComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore']}},
   { path: 'tourApp/reporting', component: ReportingComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_comunale']}}
 ];

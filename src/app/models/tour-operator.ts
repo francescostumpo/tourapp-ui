@@ -9,4 +9,5 @@ export class TourOperator {
   provincia: string;
   indirizzo: string;
   cap: number;
+  piva: string;
 }

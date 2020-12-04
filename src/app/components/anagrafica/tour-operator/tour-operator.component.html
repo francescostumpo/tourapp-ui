@@ -83,6 +83,12 @@
                         <input type="number" class="form-control" id="capUpdate" [(ngModel)]="tourOperatorForUpdate.cap">
                       </div>
                     </div>
+                    <div class="form-group row">
+                      <label for="pivaUpdate" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">P. IVA</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="pivaUpdate" [(ngModel)]="tourOperatorForUpdate.piva">
+                      </div>
+                    </div>
                     <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="createOrUpdateTourOperator('update')">Aggiorna TourOperator</button>
                   </div>
                 </div>
@@ -129,6 +135,12 @@
                       <label for="cap" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">CAP</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <input type="number" class="form-control" id="cap" [(ngModel)]="tourOperator.cap">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="piva" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">P. IVA</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="piva" [(ngModel)]="tourOperator.piva">
                       </div>
                     </div>
                     <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="createOrUpdateTourOperator('create')">Crea TourOperator</button>

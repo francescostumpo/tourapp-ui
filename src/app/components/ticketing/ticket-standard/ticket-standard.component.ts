@@ -42,7 +42,6 @@ export class TicketStandardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.luogoEmissione = this.locationService.getLocation();
     this.tourOperatorList = JSON.parse(sessionStorage.getItem('tourOperators'));
     this.siteList = JSON.parse(sessionStorage.getItem('sites'));
     this.ticketTipologyList = JSON.parse(sessionStorage.getItem('ticketTipologies'));
@@ -93,6 +92,7 @@ export class TicketStandardComponent implements OnInit {
     if (this.ticketStandard.tourOperator === ''){
       delete this.ticketStandard.tourOperator;
     }
+    this.ticketStandard.luogoEmissione = this.luogoEmissione.toUpperCase();
     this.ticketStandardService.createOrUpdateTicketStandard(this.ticketStandard, this.stampa).subscribe( res => {
       console.log(res);
       this.isTicketNotCreatedYet = false;
@@ -130,6 +130,13 @@ export class TicketStandardComponent implements OnInit {
   }
 
   selectSite(site: Site) {
+    this.luogoEmissione = this.locationService.getLocation();
+    if (this.luogoEmissione === undefined){
+      alert('Selezionare un sito di emissione ticket');
+      document.getElementById('selezioneLocationDropdown').classList.add('show');
+      this.reset();
+      return;
+    }
     if (site.nome.toUpperCase() === this.luogoEmissione.toUpperCase()){
       site.valid = false;
     }else{

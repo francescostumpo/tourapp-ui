@@ -25,31 +25,31 @@ export class AuthService {
       const decodeIDTokens = tokens.idTokenPayload;
       const userName = 'Hi ' + decodeIDTokens.name + ', Congratulations!';
       console.log(userName);
-      localStorage.setItem('token', JSON.stringify(tokens));
+      sessionStorage.setItem('token', JSON.stringify(tokens));
     }catch (e){
       console.error(e);
     }
   }
 
   isAuthenticated(): boolean{
-    if (localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== null){
+    if (sessionStorage.getItem('token') !== undefined && sessionStorage.getItem('token') !== null){
       return true;
     }
     return false;
   }
 
   getRoles(): string[]{
-    const tokens = JSON.parse(localStorage.getItem('token'));
+    const tokens = JSON.parse(sessionStorage.getItem('token'));
     return tokens.accessTokenPayload.roles;
   }
 
   getUsername(): string{
-    const tokens = JSON.parse(localStorage.getItem('token'));
+    const tokens = JSON.parse(sessionStorage.getItem('token'));
     return tokens.idTokenPayload.name;
   }
 
   getAccessToken(): string {
-    const tokens = JSON.parse(localStorage.getItem('token'));
+    const tokens = JSON.parse(sessionStorage.getItem('token'));
     return tokens.accessToken;
   }
 
@@ -67,7 +67,13 @@ export class AuthService {
 
   isAdminOrOpComunale(): boolean {
     const roles = this.getRoles();
-    if (!roles.includes('operatore_biglietteria')) { return true; }
+    if (!roles.includes('operatore_biglietteria') && !roles.includes('operatore_biglietteria_comunale')) { return true; }
+    return false;
+  }
+
+  isOperatoreBiglietteriaComunale(): boolean {
+    const roles = this.getRoles();
+    if (roles.includes('operatore_biglietteria_comunale')) { return true; }
     return false;
   }
 }

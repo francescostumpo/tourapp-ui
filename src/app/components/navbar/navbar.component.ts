@@ -39,6 +39,7 @@ export class NavbarComponent implements OnInit {
 
   setLocation(castello: string): void {
     this.locationService.changeLocation(castello);
+    document.getElementById('selezioneLocationDropdown').classList.remove('show');
   }
 
   // tslint:disable-next-line:typedef

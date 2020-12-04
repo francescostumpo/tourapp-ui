@@ -15,7 +15,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" *ngIf="!authService.isOperatoreBiglietteriaComunale()">
                 <div class="card card-selection" style="cursor: pointer" (click)="setLuogoEmissione('piedigrotta', 'Chiesetta Piedigrotta')">
                   <div class="card-body text-center mt-2" >
                     <p class="mt-2" style="font-size: 20px; cursor: pointer">Chiesetta Piedigrotta</p>
