@@ -17,8 +17,6 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(modified).pipe(
       finalize(() => {
         this.serviceCounts--;
-
-
         if (this.serviceCounts === 0) {
           document.getElementById('loading').style.display = 'none';
         }
