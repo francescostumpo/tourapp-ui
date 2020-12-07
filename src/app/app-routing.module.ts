@@ -12,6 +12,12 @@ import {BookingComponent} from './components/booking/booking.component';
 import {ReportingComponent} from './components/reporting/reporting.component';
 import {AuthGuardService} from './services/auth-guard.service';
 import {LoginComponent} from './components/login/login.component';
+import {TicketVirtualComponent} from './components/ticketing/ticket-virtual/ticket-virtual.component';
+import {TicketVirtualValidateComponent} from './components/ticketing/ticket-virtual-validate/ticket-virtual-validate.component';
+import {VirtualTourComponent} from './components/virtual-tour/virtual-tour.component';
+import {MuratCastleComponent} from './components/virtual-tour/murat-castle/murat-castle.component';
+import {PiedigrottaChurchComponent} from './components/virtual-tour/piedigrotta-church/piedigrotta-church.component';
+import {PizzoTownComponent} from './components/virtual-tour/pizzo-town/pizzo-town.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'tourApp', pathMatch: 'full'},
@@ -25,10 +31,17 @@ const routes: Routes = [
   { path: 'tourApp/anagrafica/tourOperators', component: TourOperatorComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore']} },
   { path: 'tourApp/ticketing', component: TicketingComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_biglietteria', 'operatore_biglietteria_comunale']}},
   { path: 'tourApp/ticketing/ticketStandard', component: TicketStandardComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_biglietteria', 'operatore_biglietteria_comunale']}},
+  { path: 'tourApp/ticketing/ticketVirtual', component: TicketVirtualComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_biglietteria', 'operatore_biglietteria_comunale']}},
   // tslint:disable-next-line:max-line-length
   { path: 'tourApp/ticketing/verifyTicketStandard', component: TicketStandardValidateComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_biglietteria', 'operatore_biglietteria_comunale']}},
+  // tslint:disable-next-line:max-line-length
+  { path: 'tourApp/ticketing/verifyTicketVirtual', component: TicketVirtualValidateComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_biglietteria', 'operatore_biglietteria_comunale']}},
   { path: 'tourApp/booking', component: BookingComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore']}},
-  { path: 'tourApp/reporting', component: ReportingComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_comunale']}}
+  { path: 'tourApp/reporting', component: ReportingComponent, canActivate: [AuthGuardService], data: {expectedRoles: ['amministratore', 'operatore_comunale']}},
+  { path: 'tourApp/virtualTour', component: VirtualTourComponent},
+  { path: 'tourApp/virtualTour/muratCastle', component: MuratCastleComponent},
+  { path: 'tourApp/virtualTour/piedigrottaChurch', component: PiedigrottaChurchComponent},
+  { path: 'tourApp/virtualTour/pizzoTown', component: PizzoTownComponent}
 ];
 
 @NgModule({

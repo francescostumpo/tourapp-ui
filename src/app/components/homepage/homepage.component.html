@@ -8,17 +8,24 @@
           <div class="card text-center mb-4" *ngIf="isPanelLuogoEmissione">
             <p class="header-subtitle mt-4">In quale sito ti trovi al momento?</p>
             <div class="card-body row mb-3">
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <div class="card card-selection" style="cursor: pointer" (click)="setLuogoEmissione('castello', 'Castello Murat')">
                   <div class="card-body text-center mt-2">
                     <p class="mt-2" style="font-size: 20px;">Castello Murat</p>
                   </div>
                 </div>
               </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" *ngIf="!authService.isOperatoreBiglietteriaComunale()">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12" *ngIf="!authService.isOperatoreBiglietteriaComunale()">
                 <div class="card card-selection" style="cursor: pointer" (click)="setLuogoEmissione('piedigrotta', 'Chiesetta Piedigrotta')">
                   <div class="card-body text-center mt-2" >
                     <p class="mt-2" style="font-size: 20px; cursor: pointer">Chiesetta Piedigrotta</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12" *ngIf="!authService.isOperatoreBiglietteriaComunale()">
+                <div class="card card-selection" style="cursor: pointer" (click)="setLuogoEmissione('streusa', 'Libreria Streusa')">
+                  <div class="card-body text-center mt-2" >
+                    <p class="mt-2" style="font-size: 20px; cursor: pointer">Libreria Streusa</p>
                   </div>
                 </div>
               </div>

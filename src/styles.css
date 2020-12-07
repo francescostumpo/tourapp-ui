@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~video.js/dist/video-js.css';
 .from-fixed-navbar{
   padding-top: 5rem;
 }
@@ -52,6 +53,39 @@
   padding: 0;
   width: 100%;
   background: url('assets/img/datacenter.jpg') no-repeat center center fixed;
+  opacity: 85%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.bg-img-muratCastle{
+  height: 120vh;
+  padding: 0;
+  width: 100%;
+  background: url('assets/img/muratCastle.jpg') no-repeat center center fixed;
+  opacity: 85%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.bg-img-piedigrottaChurch{
+  height: 120vh;
+  padding: 0;
+  width: 100%;
+  background: url('assets/img/piedigrottaChurch.jpg') no-repeat center center fixed;
+  opacity: 85%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.bg-img-pizzoTown{
+  height: 120vh;
+  padding: 0;
+  width: 100%;
+  background: url('assets/img/pizzoTown.jpg') no-repeat center center fixed;
   opacity: 85%;
   -webkit-background-size: cover;
   -moz-background-size: cover;

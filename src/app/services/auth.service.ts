@@ -39,41 +39,57 @@ export class AuthService {
   }
 
   getRoles(): string[]{
-    const tokens = JSON.parse(sessionStorage.getItem('token'));
-    return tokens.accessTokenPayload.roles;
+    if (this.isAuthenticated()){
+      const tokens = JSON.parse(sessionStorage.getItem('token'));
+      return tokens.accessTokenPayload.roles;
+    }
   }
 
   getUsername(): string{
+    if (this.isAuthenticated()){
     const tokens = JSON.parse(sessionStorage.getItem('token'));
-    return tokens.idTokenPayload.name;
+    return tokens.idTokenPayload.name; }
   }
 
   getAccessToken(): string {
+    if (this.isAuthenticated()){
     const tokens = JSON.parse(sessionStorage.getItem('token'));
-    return tokens.accessToken;
+    return tokens.accessToken; }
   }
 
   isAdmin(): boolean {
+    if (this.isAuthenticated()){
     const roles = this.getRoles();
     if (roles.includes('amministratore')) { return true; }
-    return false;
+    return false; }else {
+      return false;
+    }
   }
 
   isEveryOneButNotOpComunale(): boolean {
+    if (this.isAuthenticated()){
     const roles = this.getRoles();
     if (!roles.includes('operatore_comunale')) { return true; }
-    return false;
+    return false; }else {
+      return false;
+    }
   }
 
   isAdminOrOpComunale(): boolean {
+    if (this.isAuthenticated()){
     const roles = this.getRoles();
     if (!roles.includes('operatore_biglietteria') && !roles.includes('operatore_biglietteria_comunale')) { return true; }
-    return false;
+    return false; }else {
+      return false;
+    }
   }
 
   isOperatoreBiglietteriaComunale(): boolean {
+    if (this.isAuthenticated()){
     const roles = this.getRoles();
     if (roles.includes('operatore_biglietteria_comunale')) { return true; }
-    return false;
+    return false; }else {
+      return false;
+    }
   }
 }

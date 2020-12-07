@@ -1,0 +1,27 @@
+.header-title{
+  padding-top: 10rem;
+  font-weight: bold;
+  font-size: 60px;
+  color: black;
+}
+
+.header-title > span{
+  background-color: rgba(254, 255, 187, 0.6);
+  padding: 0.7rem;
+}
+
+.header-subtitle{
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+}
+
+.header-subtitle > span{
+  background-color: rgba(254, 255, 187, 0.6);
+  padding: 0.7rem;
+}
+
+.card-selection:hover{
+  border: 3px solid #fed701;
+  font-weight: bold;
+}

@@ -24,6 +24,13 @@ import { ReportingComponent } from './components/reporting/reporting.component';
 import { LoginComponent } from './components/login/login.component';
 import {AuthService} from './services/auth.service';
 import {TokenInterceptor} from './token-interceptor';
+import { TicketVirtualComponent } from './components/ticketing/ticket-virtual/ticket-virtual.component';
+import { TicketVirtualValidateComponent } from './components/ticketing/ticket-virtual-validate/ticket-virtual-validate.component';
+import { VirtualTourComponent } from './components/virtual-tour/virtual-tour.component';
+import { PizzoTownComponent } from './components/virtual-tour/pizzo-town/pizzo-town.component';
+import { MuratCastleComponent } from './components/virtual-tour/murat-castle/murat-castle.component';
+import { PiedigrottaChurchComponent } from './components/virtual-tour/piedigrotta-church/piedigrotta-church.component';
+import { VjsPlayerComponent } from './components/vjs-player/vjs-player.component';
 
 const authService = new AuthService();
 
@@ -41,7 +48,14 @@ const authService = new AuthService();
     TicketStandardValidateComponent,
     BookingComponent,
     ReportingComponent,
-    LoginComponent
+    LoginComponent,
+    TicketVirtualComponent,
+    TicketVirtualValidateComponent,
+    VirtualTourComponent,
+    PizzoTownComponent,
+    MuratCastleComponent,
+    PiedigrottaChurchComponent,
+    VjsPlayerComponent
   ],
     imports: [
         BrowserModule,

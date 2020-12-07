@@ -1,0 +1,77 @@
+<div class="bg-img-ticket">
+  <section class="from-fixed-navbar">
+    <div class="container-fluid">
+      <div class="row row-margin">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <div class="card mb-4">
+            <div class="card-body row">
+              <p class="mt-3 ml-3" style="font-size: 24px; font-weight: bold;">Ticket VirtualTour</p>
+            </div>
+            <hr>
+            <div class="card-body row mb-3">
+              <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                <div class="card card-selection">
+                  <div class="card-body mt-2">
+                    <div class="form-group row">
+                      <label for="luogoEmissione" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Luogo Emissione</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <p type="text" class="form-control-plaintext" id="luogoEmissione">{{retrieveLuogoEmissione().toUpperCase()}}</p>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="sitoVirtualTour" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Sito VirtualTour</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <select type="text" class="form-control" id="sitoVirtualTour" [(ngModel)]="ticketVirtual.ticketTipology" (ngModelChange)="calculateTotalEuro()">
+                          <option *ngFor="let ticketTypology of ticketTipologyList" [ngValue]="ticketTypology">{{ticketTypology.nome}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="tourOperator" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">TourOperator</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <select type="text" class="form-control" id="tourOperator" [(ngModel)]="ticketVirtual.tourOperator">
+                          <option value=""></option>
+                          <option *ngFor="let tourOperator of tourOperatorList" [ngValue]="tourOperator" >{{tourOperator.societa}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="nazione" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Nazione</label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <select class="form-control" id="nazione" [(ngModel)]="ticketVirtual.nazione">
+                          <option value="ITALIA" ngValue="ITALIA">ITALIA</option>
+                          <option value="GERMANIA" ngValue="GERMANIA">GERMANIA</option>
+                          <option value="FRANCIA" ngValue="FRANCIA">FRANCIA</option>
+                          <option value="SPAGNA" ngValue="SPAGNA">SPAGNA</option>
+                          <option value="RUSSIA" ngValue="RUSSIA">RUSSIA</option>
+                          <option value="ALTRO" ngValue="ALTRO">ALTRO</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div class="card card-selection">
+                  <div class="card-body mt-2">
+
+                    <div class="form-group row">
+                      <label for="totaleEuro" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Totale </label>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <p type="text" class="form-control-plaintext" id="totaleEuro" value="totaleEuro">{{totaleEuro}} €</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-outline-kairos mt-3 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="createOrUpdateTicketVirtual(false)" [disabled]="isTotaleEuroNotPresent">Crea Ticket</button>
+                <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="createOrUpdateTicketVirtual(true)" [disabled]="isTotaleEuroNotPresent">Crea e Attiva Ticket</button>
+                <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="generateFattura()" [disabled]="isTicketNotCreatedYet">Crea Ricevuta</button>
+                <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="reset()">Reset</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

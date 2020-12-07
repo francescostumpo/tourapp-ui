@@ -35,12 +35,17 @@
       <li ngbNavItem class="mr-3" *ngIf="authService.isAdmin()">
         <a ngbNavLink routerLink="/tourApp/anagrafica" routerLinkActive="link-active" style="color: white">Anagrafica</a>
       </li>
+      <li ngbNavItem class="mr-3" *ngIf="authService.isAdmin()">
+        <a ngbNavLink routerLink="/tourApp/virtualTour" routerLinkActive="link-active" style="color: white">VirtualTour</a>
+      </li>
       <li ngbNavItem ngbDropdown class="mr-3" *ngIf="authService.isEveryOneButNotOpComunale()" id="selezioneLocation">
         <a class="dropdown-toggle" ngbNavLink ngbDropdownToggle  style="color: white" >| &nbsp; &nbsp; {{getLocation()}}</a>
         <div ngbDropdownMenu aria-labelledby="navbarDropdown" id="selezioneLocationDropdown">
           <a ngbDropdownItem style="cursor: pointer" (click)="setLocation('castello')">CASTELLO</a>
           <div class="dropdown-divider" *ngIf="!authService.isOperatoreBiglietteriaComunale()"></div>
           <a ngbDropdownItem style="cursor: pointer" (click)="setLocation('piedigrotta')" *ngIf="!authService.isOperatoreBiglietteriaComunale()">PIEDIGROTTA</a>
+          <div class="dropdown-divider" *ngIf="!authService.isOperatoreBiglietteriaComunale()"></div>
+          <a ngbDropdownItem style="cursor: pointer" (click)="setLocation('streusa')" *ngIf="!authService.isOperatoreBiglietteriaComunale()">STREUSA</a> <!-- TO-DO -->
         </div>
       </li>
     </ul>

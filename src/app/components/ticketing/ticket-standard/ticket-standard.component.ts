@@ -44,7 +44,7 @@ export class TicketStandardComponent implements OnInit {
   ngOnInit(): void {
     this.tourOperatorList = JSON.parse(sessionStorage.getItem('tourOperators'));
     this.siteList = JSON.parse(sessionStorage.getItem('sites'));
-    this.ticketTipologyList = JSON.parse(sessionStorage.getItem('ticketTipologies'));
+    this.ticketTipologyList = JSON.parse(sessionStorage.getItem('ticketTipologiesStandard'));
     // Gestione della cache per evitare troppe connessioni al database quando si refresha la pagina
     if (this.tourOperatorList === undefined || this.tourOperatorList === null){
       this.getAllTourOperators();
@@ -76,8 +76,12 @@ export class TicketStandardComponent implements OnInit {
   getAllTicketTipologies(){
     this.ticketTipologyService.getAllTicketTipologies().subscribe( res => {
       // @ts-ignore
-      this.ticketTipologyList = res.body;
-      sessionStorage.setItem('ticketTipologies', JSON.stringify(this.ticketTipologyList));
+      this.ticketTipologyList = res.body.filter((ticketTipology) => {
+        if (ticketTipology.categoria === 'TicketStandard'){
+          return ticketTipology;
+        }
+      });
+      sessionStorage.setItem('ticketTipologiesStandard', JSON.stringify(this.ticketTipologyList));
     });
   }
 
