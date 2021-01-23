@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  tourappBackendUrl: 'http://localhost:8080'
+  tourappBackendUrl: 'http://tourapp-backend:8080'
 };
