@@ -1,0 +1,24 @@
+version: '3'
+
+#Define services
+services:
+  #Back-end Spring Boot Application
+  tourapp-backend:
+    #The docker file in scrum-app build the jar and provides the docker image with the following name.
+    image: tourapp-backend:latest
+    container_name: tourapp-backend
+    environment:
+      - TOURAPPDB_INSTANCENAME=TOURAPPDB
+      - TOURAPPDB_APIKEY=GdBTqAtRhx_8iR0QHD7eNll-dhtykMwPb0CDc7IfJe2p
+      - TOURAPPDB_URL=https://b41e0ab3-7001-4192-b408-c35cdee75e8c-bluemix.cloudantnosqldb.appdomain.cloud
+      - VERIFICATION_CODE=1G4lk9!
+    ports:
+      - 8080:8080 # Forward the exposed port 8080 on the container to port 8080 on the host machine
+  #Fron-end Angular Application
+  tourapp-ui:
+    image: tourapp-ui:latest
+    container_name: tourapp-ui
+    ports:
+      - 80:80
+    links:
+      - tourapp-backend
