@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  tourappBackendUrl: 'http://tourapp-backend:8080'
+  tourappBackendUrl: 'https://tourapp-kairos-backend.eu-gb.mybluemix.net'
 };

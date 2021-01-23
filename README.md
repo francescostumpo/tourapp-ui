@@ -13,6 +13,8 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build --prod --extract-css=false` to build the project. The build artifacts will be stored in the `dist/` directory. Import the Staticfile in the resulting directory.
+
 
 ## Running unit tests
 

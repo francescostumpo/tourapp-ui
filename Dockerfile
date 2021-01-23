@@ -3,7 +3,7 @@ WORKDIR '/app'
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npx ng build --prod tourapp-ui
+RUN npx ng build --prod --extract-css=false
 
 FROM nginx
 EXPOSE 80
