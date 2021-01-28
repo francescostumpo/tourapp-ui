@@ -42,4 +42,13 @@ export class TicketStandardService {
     return this.httpClient
       .get<any>(environment.tourappBackendUrl + '/api/ts/validateTicket/' + ticketId, {headers, observe: 'response'});
   }
+
+  // tslint:disable-next-line:ban-types
+  generateTicketMatrix(ticketStandard: TicketStandard): Observable<ArrayBuffer> {
+    const headers = new HttpHeaders({Authorization: 'Bearer ey'});
+    return this.httpClient
+      // @ts-ignore
+      .post<any>(environment.tourappBackendUrl + '/api/ts/generateTicketMatrix', ticketStandard, {headers, observe: 'body', responseType: 'arraybuffer'});
+
+  }
 }

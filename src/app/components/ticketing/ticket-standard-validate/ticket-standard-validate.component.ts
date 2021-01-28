@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {TicketStandard} from '../../../models/ticket-standard';
 import {TicketStandardService} from '../../../services/ticket-standard.service';
 import {faCheckCircle, faTimesCircle} from '@fortawesome/free-solid-svg-icons';
+import {DownloadService} from '../../../services/download.service';
 
 @Component({
   selector: 'app-ticket-standard-validate',
@@ -18,7 +19,7 @@ export class TicketStandardValidateComponent implements OnInit {
   isTicketNotUsableForCovalidation = true;
   disabled = '[Disabilitato]';
 
-  constructor(private ticketStandardService: TicketStandardService) { }
+  constructor(private ticketStandardService: TicketStandardService, private downloadService: DownloadService) { }
 
   ngOnInit(): void {
   }
@@ -72,6 +73,15 @@ export class TicketStandardValidateComponent implements OnInit {
       // @ts-ignore
       alert(res.body.message);
       this.verifyTicket();
+    });
+  }
+
+  generateTicketMatrix(): void {
+    this.ticketStandardService.generateTicketMatrix(this.ticketStandard).subscribe( res => {
+      console.log(res);
+      this.downloadService.downloadFile(res, 'image/png', 'tickets.png');
+    }, error => {
+      alert(error.message);
     });
   }
 }

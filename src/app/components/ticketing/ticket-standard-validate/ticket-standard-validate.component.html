@@ -73,6 +73,7 @@
                 <div class="card card-selection" *ngIf="isPanelTicketSummaryVisible">
                   <div class="card-body mt-2">
                     <button class="btn btn-outline-kairos col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="validateTicket()" [disabled]="isTicketNotUsableForCovalidation">Convalida Ticket {{disabled}}</button>
+                    <button class="btn btn-outline-kairos col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-3" (click)="generateTicketMatrix()">Ottieni Matrice Ticket </button>
                   </div>
                 </div>
               </div>
