@@ -25,20 +25,20 @@ export class TicketStandardValidateComponent implements OnInit {
   }
 
   verifyTicket(): void {
-    if (this.ticketId === null || this.ticketId === '' || this.ticketId === undefined){
+    if (this.ticketId === null || this.ticketId === '' || this.ticketId === undefined) {
       alert('Inserire un Codice Identificativo Ticket');
     }
     this.ticketStandardService.verifyTicketStandard(this.ticketId).subscribe( res => {
       // @ts-ignore
       this.ticketStandard = res.body;
       console.log(this.ticketStandard);
-      if (this.ticketStandard.ticketId === null || this.ticketStandard.ticketId === undefined){
+      if (this.ticketStandard.ticketId === null || this.ticketStandard.ticketId === undefined) {
         this.isPanelTicketSummaryVisible = false;
         this.isPanelNotFoundVisible = true;
         return;
       }
-      for (const site of this.ticketStandard.siti){
-        if (site.valid){
+      for (const site of this.ticketStandard.siti) {
+        if (site.valid) {
           this.isTicketNotUsableForCovalidation = false;
           this.disabled = '';
         }
@@ -52,24 +52,24 @@ export class TicketStandardValidateComponent implements OnInit {
 
   // tslint:disable-next-line:ban-types
   getIcon(valid: boolean): Object {
-    if (valid === true){
+    if (valid === true) {
       return faCheckCircle;
-    }else{
+    } else {
       return faTimesCircle;
     }
   }
 
   // tslint:disable-next-line:ban-types
-  getColor(valid: boolean): Object{
-    if (valid === true){
+  getColor(valid: boolean): Object {
+    if (valid === true) {
       return {color: 'limegreen'};
-    }else{
+    } else {
       return {color: 'orangered'};
     }
   }
 
   validateTicket(): void {
-    this.ticketStandardService.validateTicketStandard(this.ticketId).subscribe( res => {
+    this.ticketStandardService.validateTicketStandard(this.ticketId).subscribe(res => {
       // @ts-ignore
       alert(res.body.message);
       this.verifyTicket();

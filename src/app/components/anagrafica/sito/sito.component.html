@@ -7,7 +7,9 @@
             <div class="card-body row">
               <p class="mt-3 ml-3" style="font-size: 24px; font-weight: bold;">Gestisci Sito</p>
               <div class="ml-auto mt-3 mr-3">
-                <button ngbButton class="btn btn-outline-kairos" (click)="toggleCreateOrUpdatePanel('create')">Crea nuovo Sito</button>
+                <button ngbButton class="btn btn-outline-kairos" (click)="toggleCreateOrUpdatePanel('create')">Crea
+                  nuovo Sito
+                </button>
               </div>
             </div>
             <hr>
@@ -26,12 +28,16 @@
                       </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let site of siteList; index as i">
-                          <td>{{i + 1}}</td>
-                          <td>{{site.nome}}</td>
-                          <td>{{site.descrizioneBreve}}</td>
-                          <td class="text-center"><span style="cursor: pointer" ><fa-icon [icon]="faPencilAlt" (click)="moveForUpdate(site)"></fa-icon></span> &nbsp; <span style="cursor: pointer" ><fa-icon [icon]="faTrashAlt" (click)="deleteSite(site)"></fa-icon></span></td>
-                        </tr>
+                      <tr *ngFor="let site of siteList; index as i">
+                        <td>{{i + 1}}</td>
+                        <td>{{site.nome}}</td>
+                        <td>{{site.descrizioneBreve}}</td>
+                        <td class="text-center"><span style="cursor: pointer"><fa-icon [icon]="faPencilAlt"
+                                                                                       (click)="moveForUpdate(site)"></fa-icon></span>
+                          &nbsp; <span style="cursor: pointer"><fa-icon [icon]="faTrashAlt"
+                                                                        (click)="deleteSite(site)"></fa-icon></span>
+                        </td>
+                      </tr>
                       </tbody>
                     </table>
                   </div>
@@ -41,18 +47,23 @@
                 <div class="card card-selection" *ngIf="isPanelUpdateVisible">
                   <div class="card-body mt-2">
                     <div class="form-group row">
-                      <label for="nomeUpdate" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Nome Sito</label>
+                      <label for="nomeUpdate" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Nome
+                        Sito</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <input type="text" class="form-control" id="nomeUpdate" [(ngModel)]="siteForUpdate.nome">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="descrizioneBreveUpdate" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Descrizione Breve</label>
+                      <label for="descrizioneBreveUpdate" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Descrizione
+                        Breve</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" id="descrizioneBreveUpdate" [(ngModel)]="siteForUpdate.descrizioneBreve">
+                        <input type="text" class="form-control" id="descrizioneBreveUpdate"
+                               [(ngModel)]="siteForUpdate.descrizioneBreve">
                       </div>
                     </div>
-                    <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="createOrUpdateSite('update')">Aggiorna Sito</button>
+                    <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12"
+                            (click)="createOrUpdateSite('update')">Aggiorna Sito
+                    </button>
                   </div>
                 </div>
                 <div class="card card-selection" *ngIf="isPanelCreateVisible">
@@ -64,12 +75,16 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="descrizioneBreve" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Descrizione Breve</label>
+                      <label for="descrizioneBreve" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">Descrizione
+                        Breve</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="text" class="form-control" id="descrizioneBreve" [(ngModel)]="site.descrizioneBreve">
+                        <input type="text" class="form-control" id="descrizioneBreve"
+                               [(ngModel)]="site.descrizioneBreve">
                       </div>
                     </div>
-                    <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="createOrUpdateSite('create')">Crea Sito</button>
+                    <button class="btn btn-outline-kairos mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12"
+                            (click)="createOrUpdateSite('create')">Crea Sito
+                    </button>
                   </div>
                 </div>
               </div>

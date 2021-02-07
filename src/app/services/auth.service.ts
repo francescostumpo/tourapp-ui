@@ -4,7 +4,8 @@ import AppID from 'ibmcloud-appid-js';
 export class AuthService {
   appID = new AppID();
 
-  constructor() { }
+  constructor() {
+  }
 
   // tslint:disable-next-line:typedef use-lifecycle-interface
   async init() {
@@ -18,77 +19,92 @@ export class AuthService {
       alert(e);
     }
   }
+
   // tslint:disable-next-line:typedef
   async login() {
-    try{
+    try {
       const tokens = await this.appID.signin();
       const decodeIDTokens = tokens.idTokenPayload;
       const userName = 'Hi ' + decodeIDTokens.name + ', Congratulations!';
       console.log(userName);
       sessionStorage.setItem('token', JSON.stringify(tokens));
-    }catch (e){
+    } catch (e) {
       console.error(e);
     }
   }
 
-  isAuthenticated(): boolean{
-    if (sessionStorage.getItem('token') !== undefined && sessionStorage.getItem('token') !== null){
+  isAuthenticated(): boolean {
+    if (sessionStorage.getItem('token') !== undefined && sessionStorage.getItem('token') !== null) {
       return true;
     }
     return false;
   }
 
-  getRoles(): string[]{
-    if (this.isAuthenticated()){
+  getRoles(): string[] {
+    if (this.isAuthenticated()) {
       const tokens = JSON.parse(sessionStorage.getItem('token'));
       return tokens.accessTokenPayload.roles;
     }
   }
 
-  getUsername(): string{
-    if (this.isAuthenticated()){
-    const tokens = JSON.parse(sessionStorage.getItem('token'));
-    return tokens.idTokenPayload.name; }
+  getUsername(): string {
+    if (this.isAuthenticated()) {
+      const tokens = JSON.parse(sessionStorage.getItem('token'));
+      return tokens.idTokenPayload.name;
+    }
   }
 
   getAccessToken(): string {
-    if (this.isAuthenticated()){
-    const tokens = JSON.parse(sessionStorage.getItem('token'));
-    return tokens.accessToken; }
+    if (this.isAuthenticated()) {
+      const tokens = JSON.parse(sessionStorage.getItem('token'));
+      return tokens.accessToken;
+    }
   }
 
   isAdmin(): boolean {
-    if (this.isAuthenticated()){
-    const roles = this.getRoles();
-    if (roles.includes('amministratore')) { return true; }
-    return false; }else {
+    if (this.isAuthenticated()) {
+      const roles = this.getRoles();
+      if (roles.includes('amministratore')) {
+        return true;
+      }
+      return false;
+    } else {
       return false;
     }
   }
 
   isEveryOneButNotOpComunale(): boolean {
-    if (this.isAuthenticated()){
-    const roles = this.getRoles();
-    if (!roles.includes('operatore_comunale')) { return true; }
-    return false; }else {
+    if (this.isAuthenticated()) {
+      const roles = this.getRoles();
+      if (!roles.includes('operatore_comunale')) {
+        return true;
+      }
+      return false;
+    } else {
       return false;
     }
   }
 
   isAdminOrOpComunale(): boolean {
-    if (this.isAuthenticated()){
-    const roles = this.getRoles();
-    if (!roles.includes('operatore_biglietteria') && !roles.includes('operatore_biglietteria_comunale')) { return true; }
-    return false; }else {
+    if (this.isAuthenticated()) {
+      const roles = this.getRoles();
+      if (!roles.includes('operatore_biglietteria') && !roles.includes('operatore_biglietteria_comunale')) {
+        return true;
+      }
+      return false;
+    } else {
       return false;
     }
   }
 
   isOperatoreBiglietteriaComunale(): boolean {
-    if (this.isAuthenticated()){
-    const roles = this.getRoles();
-    if (roles.includes('operatore_biglietteria_comunale')) { return true; }
-    return false; }else {
+    if (this.isAuthenticated()) {
+      const roles = this.getRoles();
+      if (roles.includes('operatore_biglietteria_comunale')) {
+        return true;
+      }
+      return false;
+    } else {
       return false;
     }
   }

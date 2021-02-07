@@ -16,16 +16,20 @@
                     <div class="form-group row">
                       <label for="dataDATS" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">DA</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="datetime-local" class="form-control" id="dataDATS" [(ngModel)]="dataDATS" (change)="checkTSDates()">
+                        <input type="datetime-local" class="form-control" id="dataDATS" [(ngModel)]="dataDATS"
+                               (change)="checkTSDates()">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="dataATS" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">A</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="datetime-local" class="form-control" id="dataATS" [(ngModel)]="dataATS" (change)="checkTSDates()">
+                        <input type="datetime-local" class="form-control" id="dataATS" [(ngModel)]="dataATS"
+                               (change)="checkTSDates()">
                       </div>
                     </div>
-                    <button class="btn btn-outline-kairos col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="downloadReport('ts')" [disabled]="areDatesTSNotPresent">Estrai</button>
+                    <button class="btn btn-outline-kairos col-xl-12 col-lg-12 col-md-12 col-sm-12"
+                            (click)="downloadReport('ts')" [disabled]="areDatesTSNotPresent">Estrai
+                    </button>
                   </div>
                 </div>
               </div>
@@ -36,16 +40,20 @@
                     <div class="form-group row">
                       <label for="dataDATV" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">DA</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="datetime-local" class="form-control" id="dataDATV" [(ngModel)]="dataDATV" (change)="checkTVDates()">
+                        <input type="datetime-local" class="form-control" id="dataDATV" [(ngModel)]="dataDATV"
+                               (change)="checkTVDates()">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="dataATV" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-form-label">A</label>
                       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <input type="datetime-local" class="form-control" id="dataATV" [(ngModel)]="dataATV" (change)="checkTVDates()">
+                        <input type="datetime-local" class="form-control" id="dataATV" [(ngModel)]="dataATV"
+                               (change)="checkTVDates()">
                       </div>
                     </div>
-                    <button class="btn btn-outline-kairos col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="downloadReport('tv')" [disabled]="areDatesTVNotPresent">Estrai</button>
+                    <button class="btn btn-outline-kairos col-xl-12 col-lg-12 col-md-12 col-sm-12"
+                            (click)="downloadReport('tv')" [disabled]="areDatesTVNotPresent">Estrai
+                    </button>
                   </div>
                 </div>
               </div>

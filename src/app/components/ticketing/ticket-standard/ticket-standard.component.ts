@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TourOperator} from '../../../models/tour-operator';
 import {Site} from '../../../models/site';
 import {TicketTipology} from '../../../models/ticket-tipology';
@@ -46,38 +46,38 @@ export class TicketStandardComponent implements OnInit {
     this.siteList = JSON.parse(sessionStorage.getItem('sites'));
     this.ticketTipologyList = JSON.parse(sessionStorage.getItem('ticketTipologiesStandard'));
     // Gestione della cache per evitare troppe connessioni al database quando si refresha la pagina
-    if (this.tourOperatorList === undefined || this.tourOperatorList === null){
+    if (this.tourOperatorList === undefined || this.tourOperatorList === null) {
       this.getAllTourOperators();
     }
-    if (this.siteList === undefined || this.siteList === null){
+    if (this.siteList === undefined || this.siteList === null) {
       this.getAllSites();
     }
-    if (this.ticketTipologyList === undefined || this.ticketTipologyList === null){
+    if (this.ticketTipologyList === undefined || this.ticketTipologyList === null) {
       this.getAllTicketTipologies();
     }
   }
 
-  getAllTourOperators(){
-    this.tourOperatorService.getAllTourOperators().subscribe( res => {
+  getAllTourOperators() {
+    this.tourOperatorService.getAllTourOperators().subscribe(res => {
       // @ts-ignore
       this.tourOperatorList = res.body;
       sessionStorage.setItem('tourOperators', JSON.stringify(this.tourOperatorList));
     });
   }
 
-  getAllSites(){
-    this.sitoService.getAllSites().subscribe( res => {
+  getAllSites() {
+    this.sitoService.getAllSites().subscribe(res => {
       // @ts-ignore
       this.siteList = res.body;
       sessionStorage.setItem('sites', JSON.stringify(this.siteList));
     });
   }
 
-  getAllTicketTipologies(){
-    this.ticketTipologyService.getAllTicketTipologies().subscribe( res => {
+  getAllTicketTipologies() {
+    this.ticketTipologyService.getAllTicketTipologies().subscribe(res => {
       // @ts-ignore
       this.ticketTipologyList = res.body.filter((ticketTipology) => {
-        if (ticketTipology.categoria === 'TicketStandard'){
+        if (ticketTipology.categoria === 'TicketStandard') {
           return ticketTipology;
         }
       });
@@ -85,7 +85,7 @@ export class TicketStandardComponent implements OnInit {
     });
   }
 
-  calculateTotalEuro(){
+  calculateTotalEuro() {
     this.totaleEuro = this.ticketStandard.tipologiaTicket.prezzo * this.ticketStandard.nIngressi;
     this.isTotaleEuroNotPresent = false;
   }
@@ -93,11 +93,11 @@ export class TicketStandardComponent implements OnInit {
   createOrUpdateTicketStandard() {
     console.log(this.ticketStandard);
     // @ts-ignore
-    if (this.ticketStandard.tourOperator === ''){
+    if (this.ticketStandard.tourOperator === '') {
       delete this.ticketStandard.tourOperator;
     }
     this.ticketStandard.luogoEmissione = this.luogoEmissione.toUpperCase();
-    this.ticketStandardService.createOrUpdateTicketStandard(this.ticketStandard, this.stampa).subscribe( res => {
+    this.ticketStandardService.createOrUpdateTicketStandard(this.ticketStandard, this.stampa).subscribe(res => {
       console.log(res);
       this.isTicketNotCreatedYet = false;
       this.downloadService.downloadFile(res, 'image/png', 'tickets.png');
@@ -108,16 +108,17 @@ export class TicketStandardComponent implements OnInit {
 
   generateFattura() {
     // @ts-ignore
-    if (this.ticketStandard.tourOperator === ''){
+    if (this.ticketStandard.tourOperator === '') {
       delete this.ticketStandard.tourOperator;
     }
-    this.ticketStandardService.generateFattura(this.ticketStandard).subscribe( res => {
+    this.ticketStandardService.generateFattura(this.ticketStandard).subscribe(res => {
       console.log(res);
       this.downloadService.downloadFile(res, 'application/pdf', 'ricevuta.pdf');
     }, error => {
       alert(error.message);
     });
   }
+
   reset() {
     // @ts-ignore
     this.ticketStandard = {};
@@ -127,7 +128,7 @@ export class TicketStandardComponent implements OnInit {
     console.log(this.ticketStandard);
     const elements = document.getElementsByClassName('sitoCheckbox');
     // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < elements.length; i++){
+    for (let i = 0; i < elements.length; i++) {
       // @ts-ignore
       elements[i].checked = false;
     }
@@ -135,31 +136,31 @@ export class TicketStandardComponent implements OnInit {
 
   selectSite(site: Site) {
     this.luogoEmissione = this.locationService.getLocation();
-    if (this.luogoEmissione === undefined){
+    if (this.luogoEmissione === undefined) {
       alert('Selezionare un sito di emissione ticket');
       document.getElementById('selezioneLocationDropdown').classList.add('show');
       this.reset();
       return;
     }
-    if (site.nome.toUpperCase() === this.luogoEmissione.toUpperCase()){
+    if (site.nome.toUpperCase() === this.luogoEmissione.toUpperCase()) {
       site.valid = false;
-    }else{
+    } else {
       site.valid = true;
     }
     let filteredArray;
     let found = false;
     // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.siteListSupport.length; i++){
-      if (site._id === this.siteListSupport[i]._id){
+    for (let i = 0; i < this.siteListSupport.length; i++) {
+      if (site._id === this.siteListSupport[i]._id) {
         filteredArray = this.siteListSupport.filter((value, index, arr) => {
           return value._id !== site._id;
         });
         found = true;
       }
     }
-    if (!found){
+    if (!found) {
       this.siteListSupport.push(site);
-    }else{
+    } else {
       this.siteListSupport = filteredArray;
     }
     this.ticketStandard.siti = this.siteListSupport;

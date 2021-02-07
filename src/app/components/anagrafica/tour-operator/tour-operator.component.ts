@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {faPencilAlt, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {TourOperator} from '../../../models/tour-operator';
 import {TourOperatorService} from '../../../services/tour-operator.service';
@@ -28,22 +28,23 @@ export class TourOperatorComponent implements OnInit {
   ngOnInit(): void {
     this.getAllTourOperators();
   }
-  getAllTourOperators(){
-    this.tourOperatorService.getAllTourOperators().subscribe( res => {
+
+  getAllTourOperators() {
+    this.tourOperatorService.getAllTourOperators().subscribe(res => {
       // @ts-ignore
       this.tourOperatorList = res.body;
       console.log('Available TourOperators: ', this.tourOperatorList);
     });
   }
 
-  createOrUpdateTourOperator(action: string){
+  createOrUpdateTourOperator(action: string) {
     let tourOperator: TourOperator;
-    if (action === 'update'){
+    if (action === 'update') {
       tourOperator = this.tourOperatorForUpdate;
-    }else{
+    } else {
       tourOperator = this.tourOperator;
     }
-    this.tourOperatorService.createOrUpdateTourOperator(tourOperator).subscribe( res => {
+    this.tourOperatorService.createOrUpdateTourOperator(tourOperator).subscribe(res => {
       // @ts-ignore
       console.log('Response: ', res.body);
       this.toggleCreateOrUpdatePanel(action);
@@ -61,17 +62,17 @@ export class TourOperatorComponent implements OnInit {
   }
 
   toggleCreateOrUpdatePanel(action: string) {
-    if (action === 'update'){
+    if (action === 'update') {
       this.isPanelCreateVisible = false;
       this.isPanelUpdateVisible = !this.isPanelUpdateVisible;
-    }else{
+    } else {
       this.isPanelUpdateVisible = false;
       this.isPanelCreateVisible = !this.isPanelCreateVisible;
     }
   }
 
   deleteTourOperator(tourOperator: TourOperator) {
-    this.tourOperatorService.deleteTourOperator(tourOperator).subscribe( res => {
+    this.tourOperatorService.deleteTourOperator(tourOperator).subscribe(res => {
       // @ts-ignore
       alert(res.body.message);
       this.getAllTourOperators();

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TourOperatorComponent } from './tour-operator.component';
+import {TourOperatorComponent} from './tour-operator.component';
 
 describe('TourOperatorComponent', () => {
   let component: TourOperatorComponent;
@@ -8,9 +8,9 @@ describe('TourOperatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TourOperatorComponent ]
+      declarations: [TourOperatorComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {faPencilAlt, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {TicketTipologyService} from '../../../services/ticket-tipology.service';
 import {TicketTipology} from '../../../models/ticket-tipology';
@@ -26,8 +26,9 @@ export class TicketTipologyComponent implements OnInit {
   ngOnInit(): void {
     this.getAllTicketTipologies();
   }
-  getAllTicketTipologies(){
-    this.ticketTipologyService.getAllTicketTipologies().subscribe( res => {
+
+  getAllTicketTipologies() {
+    this.ticketTipologyService.getAllTicketTipologies().subscribe(res => {
       // @ts-ignore
       this.ticketTipologyList = res.body;
       console.log('Available TicketTipologies: ', this.ticketTipologyList);
@@ -36,12 +37,12 @@ export class TicketTipologyComponent implements OnInit {
 
   createOrUpdateTicketTipology(action: string) {
     let ticketToPost: TicketTipology;
-    if (action === 'update'){
+    if (action === 'update') {
       ticketToPost = this.ticketTipologyForUpdate;
-    }else{
+    } else {
       ticketToPost = this.ticketTipology;
     }
-    this.ticketTipologyService.createOrUpdateTicketTipology(ticketToPost).subscribe( res => {
+    this.ticketTipologyService.createOrUpdateTicketTipology(ticketToPost).subscribe(res => {
       // @ts-ignore
       console.log('Response: ', res.body);
       // @ts-ignore
@@ -57,18 +58,19 @@ export class TicketTipologyComponent implements OnInit {
     this.ticketTipologyForUpdate = ticketTipology;
     this.toggleCreateOrUpdatePanel('update');
   }
+
   toggleCreateOrUpdatePanel(action: string) {
-    if (action === 'update'){
+    if (action === 'update') {
       this.isPanelCreateVisible = false;
       this.isPanelUpdateVisible = !this.isPanelUpdateVisible;
-    }else{
+    } else {
       this.isPanelUpdateVisible = false;
       this.isPanelCreateVisible = !this.isPanelCreateVisible;
     }
   }
 
   deleteTicketTipology(ticketTipology: TicketTipology) {
-    this.ticketTipologyService.deleteTicketTipology(ticketTipology).subscribe( res => {
+    this.ticketTipologyService.deleteTicketTipology(ticketTipology).subscribe(res => {
       // @ts-ignore
       alert(res.body.message);
       this.getAllTicketTipologies();

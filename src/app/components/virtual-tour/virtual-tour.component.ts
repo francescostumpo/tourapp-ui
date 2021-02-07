@@ -22,19 +22,19 @@ export class VirtualTourComponent implements OnInit {
 
   login(): void {
     console.log(this.ticketVirtual);
-    this.ticketVirtualService.loginToVirtualTour(this.ticketVirtual).subscribe( res => {
+    this.ticketVirtualService.loginToVirtualTour(this.ticketVirtual).subscribe(res => {
       console.log(res);
       // @ts-ignore
-      if (res.body.message.includes('Piedigrotta')){
+      if (res.body.message.includes('Piedigrotta')) {
         this.router.navigate(['piedigrottaChurch'], {relativeTo: this.route});
         // @ts-ignore
-      }else if (res.body.message.includes('Castello')){
+      } else if (res.body.message.includes('Castello')) {
         this.router.navigate(['muratCastle'], {relativeTo: this.route});
-      }else{
+      } else {
         this.router.navigate(['pizzoTown'], {relativeTo: this.route});
       }
     }, error => {
-     alert(error.error.message);
+      alert(error.error.message);
     });
   }
 }

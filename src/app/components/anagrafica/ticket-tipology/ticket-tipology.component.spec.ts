@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TicketTipologyComponent } from './ticket-tipology.component';
+import {TicketTipologyComponent} from './ticket-tipology.component';
 
 describe('TicketTipologyComponent', () => {
   let component: TicketTipologyComponent;
@@ -8,9 +8,9 @@ describe('TicketTipologyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TicketTipologyComponent ]
+      declarations: [TicketTipologyComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

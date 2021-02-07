@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TicketVirtualComponent } from './ticket-virtual.component';
+import {TicketVirtualComponent} from './ticket-virtual.component';
 
 describe('TicketVirtualComponent', () => {
   let component: TicketVirtualComponent;
@@ -8,9 +8,9 @@ describe('TicketVirtualComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TicketVirtualComponent ]
+      declarations: [TicketVirtualComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

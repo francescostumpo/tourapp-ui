@@ -1,4 +1,4 @@
-import { TicketStandard } from './ticket-standard';
+import {TicketStandard} from './ticket-standard';
 
 describe('TicketStandard', () => {
   it('should create an instance', () => {

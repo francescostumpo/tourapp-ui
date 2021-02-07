@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import videojs from 'video.js';
 
 @Component({
@@ -27,7 +27,8 @@ export class VjsPlayerComponent implements OnInit, OnDestroy {
 
   constructor(
     private elementRef: ElementRef,
-  ) { }
+  ) {
+  }
 
   // tslint:disable-next-line:typedef
   ngOnInit() {

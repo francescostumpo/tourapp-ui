@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TicketVirtualValidateComponent } from './ticket-virtual-validate.component';
+import {TicketVirtualValidateComponent} from './ticket-virtual-validate.component';
 
 describe('TicketVirtualValidateComponent', () => {
   let component: TicketVirtualValidateComponent;
@@ -8,9 +8,9 @@ describe('TicketVirtualValidateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TicketVirtualValidateComponent ]
+      declarations: [TicketVirtualValidateComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

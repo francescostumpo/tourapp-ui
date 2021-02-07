@@ -1,16 +1,19 @@
 <nav class="navbar navbar-expand-lg bg-kairos fixed-top">
   <div class="d-none d-md-block">
     <img routerLink="/tourApp" src="assets/img/logo-kairos.png" class="mt-2"
-         width="40%" style="cursor: pointer;"><span class="align-middle" style="letter-spacing: 0.2px; font-weight: bold; font-size: 24px;">&nbsp; [TourApp]</span>
+         width="40%" style="cursor: pointer;"><span class="align-middle"
+                                                    style="letter-spacing: 0.2px; font-weight: bold; font-size: 24px;">&nbsp; [TourApp]</span>
   </div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="navbar-nav ml-auto" id="navbarSupportedContent" *ngIf="isNotPortal()">
     <ul ngbNav class="mr-auto">
       <li ngbNavItem class="mr-3" *ngIf="authService.isEveryOneButNotOpComunale()">
-        <a ngbNavLink routerLink="/tourApp/homepage" routerLinkActive="link-active" [routerLinkActiveOptions]="{exact: true}" style="color: white">Homepage<span class="sr-only">(current)</span></a>
+        <a ngbNavLink routerLink="/tourApp/homepage" routerLinkActive="link-active"
+           [routerLinkActiveOptions]="{exact: true}" style="color: white">Homepage<span class="sr-only">(current)</span></a>
       </li>
       <li ngbNavItem class="mr-3" *ngIf="authService.isEveryOneButNotOpComunale()">
         <a ngbNavLink routerLink="/tourApp/ticketing" routerLinkActive="link-active" style="color: white">Ticketing</a>
@@ -33,19 +36,24 @@
         <a ngbNavLink routerLink="/tourApp/booking" routerLinkActive="link-active" style="color: white">Booking</a>
       </li>
       <li ngbNavItem class="mr-3" *ngIf="authService.isAdmin()">
-        <a ngbNavLink routerLink="/tourApp/anagrafica" routerLinkActive="link-active" style="color: white">Anagrafica</a>
+        <a ngbNavLink routerLink="/tourApp/anagrafica" routerLinkActive="link-active"
+           style="color: white">Anagrafica</a>
       </li>
       <li ngbNavItem class="mr-3" *ngIf="authService.isAdmin()">
-        <a ngbNavLink routerLink="/tourApp/virtualTour" routerLinkActive="link-active" style="color: white">VirtualTour</a>
+        <a ngbNavLink routerLink="/tourApp/virtualTour" routerLinkActive="link-active"
+           style="color: white">VirtualTour</a>
       </li>
       <li ngbNavItem ngbDropdown class="mr-3" *ngIf="authService.isEveryOneButNotOpComunale()" id="selezioneLocation">
-        <a class="dropdown-toggle" ngbNavLink ngbDropdownToggle  style="color: white" >| &nbsp; &nbsp; {{getLocation()}}</a>
+        <a class="dropdown-toggle" ngbNavLink ngbDropdownToggle style="color: white">| &nbsp; &nbsp;
+          {{getLocation()}}</a>
         <div ngbDropdownMenu aria-labelledby="navbarDropdown" id="selezioneLocationDropdown">
           <a ngbDropdownItem style="cursor: pointer" (click)="setLocation('castello')">CASTELLO</a>
           <div class="dropdown-divider" *ngIf="!authService.isOperatoreBiglietteriaComunale()"></div>
-          <a ngbDropdownItem style="cursor: pointer" (click)="setLocation('piedigrotta')" *ngIf="!authService.isOperatoreBiglietteriaComunale()">PIEDIGROTTA</a>
+          <a ngbDropdownItem style="cursor: pointer" (click)="setLocation('piedigrotta')"
+             *ngIf="!authService.isOperatoreBiglietteriaComunale()">PIEDIGROTTA</a>
           <div class="dropdown-divider" *ngIf="!authService.isOperatoreBiglietteriaComunale()"></div>
-          <a ngbDropdownItem style="cursor: pointer" (click)="setLocation('streusa')" *ngIf="!authService.isOperatoreBiglietteriaComunale()">STREUSA</a> <!-- TO-DO -->
+          <a ngbDropdownItem style="cursor: pointer" (click)="setLocation('streusa')"
+             *ngIf="!authService.isOperatoreBiglietteriaComunale()">STREUSA</a> <!-- TO-DO -->
         </div>
       </li>
     </ul>

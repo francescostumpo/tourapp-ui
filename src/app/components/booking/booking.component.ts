@@ -15,9 +15,9 @@ import {
   CalendarEventTitleFormatter,
   CalendarView
 } from 'angular-calendar';
-import { WeekViewHourSegment } from 'calendar-utils';
-import { fromEvent } from 'rxjs';
-import { finalize, takeUntil } from 'rxjs/operators';
+import {WeekViewHourSegment} from 'calendar-utils';
+import {fromEvent} from 'rxjs';
+import {finalize, takeUntil} from 'rxjs/operators';
 import {addDays, addMinutes, endOfWeek, parseISO} from 'date-fns';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Subject} from 'rxjs';
@@ -55,7 +55,7 @@ function ceilToNearest(amount: number, precision: number) {
 })
 // tslint:disable:typedef
 export class BookingComponent implements OnInit {
-  @ViewChild('modalContentAddEvent', { static: true }) modalContentAddEvent: TemplateRef<any>;
+  @ViewChild('modalContentAddEvent', {static: true}) modalContentAddEvent: TemplateRef<any>;
   events: CalendarEvent[] = [];
   faTrash = faTrash;
   view = CalendarView.Week;
@@ -72,23 +72,25 @@ export class BookingComponent implements OnInit {
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor(private modal: NgbModal, private cdr: ChangeDetectorRef, public dateFormatter: DateFormatterService, private bookingService: BookingService) {}
+  constructor(private modal: NgbModal, private cdr: ChangeDetectorRef, public dateFormatter: DateFormatterService, private bookingService: BookingService) {
+  }
+
   ngOnInit(): void {
     this.getAllEvents();
   }
 
   verifyIfNextEvent(event: CalendarEvent) {
-    if (event.start >= new Date() || (event.start <= new Date() && event.end >= new Date())){
+    if (event.start >= new Date() || (event.start <= new Date() && event.end >= new Date())) {
       this.nextEvents.push(event);
     }
   }
 
-  getAllEvents(): void{
-    this.bookingService.getAllBookings().subscribe( res => {
+  getAllEvents(): void {
+    this.bookingService.getAllBookings().subscribe(res => {
       this.events = [];
       this.nextEvents = [];
       // @ts-ignore
-      for (const event: CalendarEvent of res.body){
+      for (const event: CalendarEvent of res.body) {
         event.start = parseISO(event.start);
         event.end = parseISO(event.end);
         this.events.push(event);
@@ -98,7 +100,7 @@ export class BookingComponent implements OnInit {
     });
   }
 
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+  dayClicked({date, events}: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
@@ -131,13 +133,13 @@ export class BookingComponent implements OnInit {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContentAddEvent, { size: 'lg' });
+    this.modalData = {event, action};
+    this.modal.open(this.modalContentAddEvent, {size: 'lg'});
   }
 
   handleEventCustom(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContentAddEvent, { size: 'lg' });
+    this.modalData = {event, action};
+    this.modal.open(this.modalContentAddEvent, {size: 'lg'});
   }
 
   addEventCustom(event: CalendarEvent): void {
@@ -147,7 +149,7 @@ export class BookingComponent implements OnInit {
     booking.title = event.title;
     booking.start = event.start;
     booking.end = event.end;
-    this.bookingService.createOrUpdateBooking(booking).subscribe( res => {
+    this.bookingService.createOrUpdateBooking(booking).subscribe(res => {
       console.log(res.body);
       this.getAllEvents();
       this.modal.dismissAll();
@@ -185,6 +187,7 @@ export class BookingComponent implements OnInit {
   handleDrag($event: DragEvent) {
     console.log($event);
   }
+
   startDragToCreate(
     segment: WeekViewHourSegment,
     mouseDownEvent: MouseEvent,

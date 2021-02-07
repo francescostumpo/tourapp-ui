@@ -1,4 +1,4 @@
-import { TourOperator } from './tour-operator';
+import {TourOperator} from './tour-operator';
 
 describe('TourOperator', () => {
   it('should create an instance', () => {

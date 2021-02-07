@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SitoComponent } from './sito.component';
+import {SitoComponent} from './sito.component';
 
 describe('SitoComponent', () => {
   let component: SitoComponent;
@@ -8,9 +8,9 @@ describe('SitoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SitoComponent ]
+      declarations: [SitoComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

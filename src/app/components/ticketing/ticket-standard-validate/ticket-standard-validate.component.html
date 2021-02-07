@@ -13,57 +13,73 @@
                 <div class="card card-selection">
                   <div class="card-body mt-2">
                     <div class="form-group row">
-                      <label for="ticketId" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">Codice Ticket</label>
+                      <label for="ticketId" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">Codice
+                        Ticket</label>
                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                         <input type="text" class="form-control" id="ticketId" [(ngModel)]="ticketId">
                       </div>
                     </div>
-                    <button class="btn btn-outline-kairos col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="verifyTicket()">Verifica Ticket</button>
+                    <button class="btn btn-outline-kairos col-xl-12 col-lg-12 col-md-12 col-sm-12"
+                            (click)="verifyTicket()">Verifica Ticket
+                    </button>
                   </div>
                 </div>
               </div>
               <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
                 <div class="card card-selection" *ngIf="isPanelNotFoundVisible">
                   <div class="card-body mt-2">
-                    <p class="mt-3" style="font-size: 24px; font-weight: bold;">Nessun ticket trovato con codice identificativo: {{ticketId}}</p>
+                    <p class="mt-3" style="font-size: 24px; font-weight: bold;">Nessun ticket trovato con codice
+                      identificativo: {{ticketId}}</p>
                   </div>
                 </div>
                 <div class="card card-selection" *ngIf="isPanelTicketSummaryVisible">
                   <div class="card-body mt-2">
                     <div class="form-group row">
-                      <label for="codiceTicket" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">Codice Ticket </label>
+                      <label for="codiceTicket" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">Codice
+                        Ticket </label>
                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                        <p type="text" class="form-control-plaintext" id="codiceTicket" >{{ticketStandard.ticketId}}</p>
+                        <p type="text" class="form-control-plaintext" id="codiceTicket">{{ticketStandard.ticketId}}</p>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="tipologiaTicket" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">Tipologia Ticket </label>
+                      <label for="tipologiaTicket" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">Tipologia
+                        Ticket </label>
                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                        <p type="text" class="form-control-plaintext" id="tipologiaTicket" >{{ticketStandard.tipologiaTicket.nome}}</p>
+                        <p type="text" class="form-control-plaintext" id="tipologiaTicket">
+                          {{ticketStandard.tipologiaTicket.nome}}</p>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="dataEmssione" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">Data Emissione Ticket </label>
+                      <label for="dataEmssione" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">Data
+                        Emissione Ticket </label>
                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                        <p type="text" class="form-control-plaintext" id="dataEmssione" >{{ticketStandard.dataEmissione}}</p>
+                        <p type="text" class="form-control-plaintext" id="dataEmssione">
+                          {{ticketStandard.dataEmissione}}</p>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="tourOperator" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">Tour Operator </label>
+                      <label for="tourOperator" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">Tour
+                        Operator </label>
                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                        <p type="text" class="form-control-plaintext" id="tourOperator" >{{ticketStandard.tourOperator === null ? 'Non disponibile' : ticketStandard.tourOperator.societa}}</p>
+                        <p type="text" class="form-control-plaintext" id="tourOperator">{{ticketStandard.tourOperator
+                          === null ? 'Non disponibile' : ticketStandard.tourOperator.societa}}</p>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="nIngressi" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">N. Ingressi Validi</label>
+                      <label for="nIngressi" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">N. Ingressi
+                        Validi</label>
                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                        <p type="text" class="form-control-plaintext" id="nIngressi" >{{ticketStandard.nIngressi}}</p>
+                        <p type="text" class="form-control-plaintext" id="nIngressi">{{ticketStandard.nIngressi}}</p>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="siti" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">Siti validi per il Ticket </label>
+                      <label for="siti" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-form-label">Siti validi per il
+                        Ticket </label>
                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                        <p type="text" class="form-control-plaintext" id="siti" ><span *ngFor="let site of ticketStandard.siti"><span>{{site.nome}} &nbsp; <fa-icon [icon]='getIcon(site.valid)' [styles]="getColor(site.valid)"></fa-icon> &nbsp; &nbsp;</span></span></p>
+                        <p type="text" class="form-control-plaintext" id="siti"><span
+                          *ngFor="let site of ticketStandard.siti"><span>{{site.nome}} &nbsp; <fa-icon
+                          [icon]='getIcon(site.valid)'
+                          [styles]="getColor(site.valid)"></fa-icon> &nbsp; &nbsp;</span></span></p>
                       </div>
                     </div>
                   </div>
@@ -72,7 +88,10 @@
               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
                 <div class="card card-selection" *ngIf="isPanelTicketSummaryVisible">
                   <div class="card-body mt-2">
-                    <button class="btn btn-outline-kairos col-xl-12 col-lg-12 col-md-12 col-sm-12" (click)="validateTicket()" [disabled]="isTicketNotUsableForCovalidation">Convalida Ticket {{disabled}}</button>
+                    <button class="btn btn-outline-kairos col-xl-12 col-lg-12 col-md-12 col-sm-12"
+                            (click)="validateTicket()" [disabled]="isTicketNotUsableForCovalidation">Convalida Ticket
+                      {{disabled}}
+                    </button>
                     <button class="btn btn-outline-kairos col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-3" (click)="generateTicketMatrix()">Ottieni Matrice Ticket </button>
                   </div>
                 </div>

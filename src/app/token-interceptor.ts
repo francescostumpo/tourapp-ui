@@ -1,5 +1,5 @@
 import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 import {AuthService} from './services/auth.service';
 import {serviceCounts} from './globals';
 import {finalize} from 'rxjs/operators';
@@ -9,9 +9,9 @@ export class TokenInterceptor implements HttpInterceptor {
   authService = new AuthService();
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.serviceCounts ++;
+    this.serviceCounts++;
     const modified = req.clone({
-      setHeaders: { Authorization: 'Bearer ' + this.authService.getAccessToken() }
+      setHeaders: {Authorization: 'Bearer ' + this.authService.getAccessToken()}
     });
     document.getElementById('loading').style.display = 'block';
     return next.handle(modified).pipe(

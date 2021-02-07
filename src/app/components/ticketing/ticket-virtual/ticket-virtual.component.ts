@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TicketVirtual} from '../../../models/ticket-virtual';
 import {TourOperator} from '../../../models/tour-operator';
 import {TourOperatorService} from '../../../services/tour-operator.service';
@@ -31,27 +31,28 @@ export class TicketVirtualComponent implements OnInit {
     this.tourOperatorList = JSON.parse(sessionStorage.getItem('tourOperators'));
     this.ticketTipologyList = JSON.parse(sessionStorage.getItem('ticketTipologiesVirtual'));
     // Gestione della cache per evitare troppe connessioni al database quando si refresha la pagina
-    if (this.tourOperatorList === undefined || this.tourOperatorList === null){
+    if (this.tourOperatorList === undefined || this.tourOperatorList === null) {
       this.getAllTourOperators();
     }
-    if (this.ticketTipologyList === undefined || this.ticketTipologyList === null){
+    if (this.ticketTipologyList === undefined || this.ticketTipologyList === null) {
       this.getAllTicketTipologies();
     }
   }
 
-  getAllTourOperators(): void{
-    this.tourOperatorService.getAllTourOperators().subscribe( res => {
+  getAllTourOperators(): void {
+    this.tourOperatorService.getAllTourOperators().subscribe(res => {
       // @ts-ignore
       this.tourOperatorList = res.body;
       sessionStorage.setItem('tourOperators', JSON.stringify(this.tourOperatorList));
     });
   }
+
   // tslint:disable-next-line:typedef
-  getAllTicketTipologies(){
-    this.ticketTipologyService.getAllTicketTipologies().subscribe( res => {
+  getAllTicketTipologies() {
+    this.ticketTipologyService.getAllTicketTipologies().subscribe(res => {
       // @ts-ignore
       this.ticketTipologyList = res.body.filter((ticketTipology) => {
-        if (ticketTipology.categoria === 'TicketVirtual'){
+        if (ticketTipology.categoria === 'TicketVirtual') {
           return ticketTipology;
         }
       });
@@ -61,7 +62,7 @@ export class TicketVirtualComponent implements OnInit {
 
   calculateTotalEuro(): void {
     this.totaleEuro = this.ticketVirtual.ticketTipology.prezzo;
-    if (this.totaleEuro !== undefined){
+    if (this.totaleEuro !== undefined) {
       this.isTotaleEuroNotPresent = false;
     }
   }
@@ -69,11 +70,11 @@ export class TicketVirtualComponent implements OnInit {
   createOrUpdateTicketVirtual(validate: boolean): void {
     console.log(this.ticketVirtual);
     // @ts-ignore
-    if (this.ticketVirtual.tourOperator === ''){
+    if (this.ticketVirtual.tourOperator === '') {
       delete this.ticketVirtual.tourOperator;
     }
     this.ticketVirtual.luogoEmissione = this.ticketVirtual.luogoEmissione.toUpperCase();
-    this.ticketVirtualService.createOrUpdateTicketVirtual(this.ticketVirtual, validate).subscribe( res => {
+    this.ticketVirtualService.createOrUpdateTicketVirtual(this.ticketVirtual, validate).subscribe(res => {
       console.log(res);
       this.isTicketNotCreatedYet = false;
       this.downloadService.downloadFile(res, 'image/png', 'tickets.png');
@@ -84,10 +85,10 @@ export class TicketVirtualComponent implements OnInit {
 
   generateFattura(): void {
 // @ts-ignore
-    if (this.ticketVirtual.tourOperator === ''){
+    if (this.ticketVirtual.tourOperator === '') {
       delete this.ticketVirtual.tourOperator;
     }
-    this.ticketVirtualService.generateFattura(this.ticketVirtual).subscribe( res => {
+    this.ticketVirtualService.generateFattura(this.ticketVirtual).subscribe(res => {
       console.log(res);
       this.downloadService.downloadFile(res, 'application/pdf', 'ricevuta.pdf');
     }, error => {
@@ -105,10 +106,10 @@ export class TicketVirtualComponent implements OnInit {
 
   retrieveLuogoEmissione(): string {
     const luogoEmissione = this.locationService.getLocation();
-    if (luogoEmissione !== undefined && luogoEmissione !== null){
+    if (luogoEmissione !== undefined && luogoEmissione !== null) {
       this.ticketVirtual.luogoEmissione = luogoEmissione;
       return luogoEmissione;
-    }else{
+    } else {
       this.ticketVirtual.luogoEmissione = 'streusa';
       return 'streusa';
     }

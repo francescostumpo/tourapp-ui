@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 
-export interface LuogoEmissione{
+export interface LuogoEmissione {
   name: string;
 }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,11 +21,12 @@ export class LocationService {
     this.locationChangeSource.next(locationName);
   }
 
-  getLocation(): string{
+  getLocation(): string {
     return this.locationName;
   }
 
-  constructor() { }
+  constructor() {
+  }
 
 
 }

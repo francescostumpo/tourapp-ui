@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DownloadService {
 
-  constructor() { }
+  constructor() {
+  }
+
   // tslint:disable-next-line:typedef
   downloadFile(response: ArrayBuffer, mimeType: string, fileName: string) {
     const file = new Blob([response], {type: mimeType});

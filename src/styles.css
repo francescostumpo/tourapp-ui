@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~video.js/dist/video-js.css';
-.from-fixed-navbar{
+
+.from-fixed-navbar {
   padding-top: 5rem;
 }
-.bg-img{
+
+.bg-img {
   height: 130vh;
   padding: 0;
   width: 100%;
@@ -15,7 +17,7 @@
   background-size: cover;
 }
 
-.bg-img-ticket{
+.bg-img-ticket {
   height: 120vh;
   padding: 0;
   width: 100%;
@@ -26,7 +28,8 @@
   -o-background-size: cover;
   background-size: cover;
 }
-.bg-img-booking{
+
+.bg-img-booking {
   height: 150vh;
   padding: 0;
   width: 100%;
@@ -37,7 +40,8 @@
   -o-background-size: cover;
   background-size: cover;
 }
-.bg-img-reporting{
+
+.bg-img-reporting {
   height: 120vh;
   padding: 0;
   width: 100%;
@@ -48,7 +52,8 @@
   -o-background-size: cover;
   background-size: cover;
 }
-.bg-img-anagrafica{
+
+.bg-img-anagrafica {
   height: 120vh;
   padding: 0;
   width: 100%;
@@ -59,7 +64,8 @@
   -o-background-size: cover;
   background-size: cover;
 }
-.bg-img-muratCastle{
+
+.bg-img-muratCastle {
   height: 120vh;
   padding: 0;
   width: 100%;
@@ -70,7 +76,8 @@
   -o-background-size: cover;
   background-size: cover;
 }
-.bg-img-piedigrottaChurch{
+
+.bg-img-piedigrottaChurch {
   height: 120vh;
   padding: 0;
   width: 100%;
@@ -81,7 +88,8 @@
   -o-background-size: cover;
   background-size: cover;
 }
-.bg-img-pizzoTown{
+
+.bg-img-pizzoTown {
   height: 120vh;
   padding: 0;
   width: 100%;
@@ -92,13 +100,14 @@
   -o-background-size: cover;
   background-size: cover;
 }
-.bg-section{
+
+.bg-section {
   margin-top: 6rem;
   /*min-height: 50vh;*/
   /*background-color: #f0f4f4;*/
 }
 
-.row-margin{
+.row-margin {
   padding-top: 3rem;
 }
 
@@ -107,8 +116,8 @@
   border-color: #ffc107;
 }
 
-.btn-outline-kairos:hover{
-  background: linear-gradient(90deg, rgba(241,245,5,1) 0%, rgba(236,142,5,1) 50%, rgba(255,0,7,1) 100%);
+.btn-outline-kairos:hover {
+  background: linear-gradient(90deg, rgba(241, 245, 5, 1) 0%, rgba(236, 142, 5, 1) 50%, rgba(255, 0, 7, 1) 100%);
   color: black;
 }
 

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TicketStandardValidateComponent } from './ticket-standard-validate.component';
+import {TicketStandardValidateComponent} from './ticket-standard-validate.component';
 
 describe('TicketStandardValidateComponent', () => {
   let component: TicketStandardValidateComponent;
@@ -8,9 +8,9 @@ describe('TicketStandardValidateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TicketStandardValidateComponent ]
+      declarations: [TicketStandardValidateComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PiedigrottaChurchComponent } from './piedigrotta-church.component';
+import {PiedigrottaChurchComponent} from './piedigrotta-church.component';
 
 describe('PiedigrottaChurchComponent', () => {
   let component: PiedigrottaChurchComponent;
@@ -8,9 +8,9 @@ describe('PiedigrottaChurchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PiedigrottaChurchComponent ]
+      declarations: [PiedigrottaChurchComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

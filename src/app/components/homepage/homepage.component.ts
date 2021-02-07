@@ -19,37 +19,39 @@ export class HomepageComponent implements OnInit {
   userName: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private locationService: LocationService, private authService: AuthService) {
-      locationService.locationAnnounced$.subscribe((locationName) => {
-        this.luogoEmissione = locationName;
-      });
+    locationService.locationAnnounced$.subscribe((locationName) => {
+      this.luogoEmissione = locationName;
+    });
   }
 
   ngOnInit(): void {
-    if (this.locationService.getLocation() !== undefined && this.locationService.getLocation() !== null){
+    if (this.locationService.getLocation() !== undefined && this.locationService.getLocation() !== null) {
       this.isPanelLuogoEmissione = !this.isPanelLuogoEmissione;
       this.isPanelRecapActivities = !this.isPanelRecapActivities;
       this.luogoEmissione = this.locationService.getLocation();
       this.locationService.changeLocation(this.luogoEmissione);
-    }else{
+    } else {
       this.isPanelLuogoEmissione = true;
       this.isPanelRecapActivities = false;
     }
 
     this.userName = this.authService.getUsername();
   }
+
   setLuogoEmissione(luogoEmissione: string, luogoEmissioneNome: string): void {
     this.luogoEmissione = luogoEmissione;
     this.locationService.changeLocation(this.luogoEmissione);
     this.isPanelLuogoEmissione = !this.isPanelLuogoEmissione;
     this.isPanelRecapActivities = !this.isPanelRecapActivities;
   }
+
   setPanelLuogoEmissione(): void {
     this.isPanelLuogoEmissione = true;
     this.isPanelRecapActivities = false;
   }
 
   goToView(location: string): void {
-    this.router.navigate(['tourApp/' + location] );
+    this.router.navigate(['tourApp/' + location]);
   }
 
 

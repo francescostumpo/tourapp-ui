@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
-
 
 
 @Component({
@@ -11,17 +10,18 @@ import {AuthService} from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute, public authService: AuthService) {}
+  constructor(private router: Router, private route: ActivatedRoute, public authService: AuthService) {
+  }
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
   }
 
-  goToApp(): void{
+  goToApp(): void {
     const roles = this.authService.getRoles();
-    if (roles.includes('operatore_comunale')){
+    if (roles.includes('operatore_comunale')) {
       this.router.navigate(['reporting'], {relativeTo: this.route});
-    }else{
+    } else {
       this.router.navigate(['homepage'], {relativeTo: this.route});
     }
   }

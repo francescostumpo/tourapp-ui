@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import * as moment from 'moment';
 
 @Injectable({
@@ -6,10 +6,11 @@ import * as moment from 'moment';
 })
 export class DateFormatterService {
   // tslint:disable-next-line:typedef
-  formateDateDHM(date: Date): string{
-      return moment(date).format('DD/MM/yy HH:mm');
+  formateDateDHM(date: Date): string {
+    return moment(date).format('DD/MM/yy HH:mm');
   }
-  formateDateD(date: Date): string{
+
+  formateDateD(date: Date): string {
     return moment(date).format('DD/MM/yyyy');
   }
 }

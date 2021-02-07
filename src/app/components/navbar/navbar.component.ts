@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
 
 
   getLocation(): string {
-    if (this.luogoEmissione === undefined || this.luogoEmissione === null){
+    if (this.luogoEmissione === undefined || this.luogoEmissione === null) {
       return 'Non disponibile';
     }
     return this.luogoEmissione.toUpperCase();
@@ -45,7 +45,7 @@ export class NavbarComponent implements OnInit {
   // tslint:disable-next-line:typedef
   isNotPortal() {
     const location = window.location.pathname;
-    if (location === '/tourApp'){
+    if (location === '/tourApp') {
       return false;
     }
     return true;

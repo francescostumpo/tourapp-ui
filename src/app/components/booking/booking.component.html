@@ -32,7 +32,7 @@
                             style="font-size: 10px"
                             id="today"
                           >
-                          Oggi
+                            Oggi
 
                           </div>
                           <div
@@ -79,7 +79,7 @@
                         </div>
                       </div>
                     </div>
-                    <br />
+                    <br/>
                     <div [ngSwitch]="view">
                       <mwl-calendar-month-view
                         *ngSwitchCase="CalendarView.Month"
@@ -133,10 +133,12 @@
                             <p class="form-control-plaintext" id="titoloEventoP">{{event.title}}</p>
                           </div>
                           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-                            <p  class="form-control-plaintext" id="dataEventoDa">DAL {{dateFormatter.formateDateDHM(event.start)}}</p>
+                            <p class="form-control-plaintext" id="dataEventoDa">DAL
+                              {{dateFormatter.formateDateDHM(event.start)}}</p>
                           </div>
                           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-                            <p  class="form-control-plaintext" id="dataEventoA">AL  {{dateFormatter.formateDateDHM(event.end)}}</p>
+                            <p class="form-control-plaintext" id="dataEventoA">AL
+                              {{dateFormatter.formateDateDHM(event.end)}}</p>
                           </div>
                           <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 mt-1">
                             <fa-icon style="cursor: pointer" [icon]="faTrash" (click)="deleteEvent(event)"></fa-icon>
@@ -175,13 +177,15 @@
       <div class="form-group row">
         <label for="inizioEvento" class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-form-label">Data Inizio</label>
         <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-          <p type="text" class="form-control-plaintext" id="inizioEvento">{{dateFormatter.formateDateDHM(modalData.event.start)}}</p>
+          <p type="text" class="form-control-plaintext" id="inizioEvento">
+            {{dateFormatter.formateDateDHM(modalData.event.start)}}</p>
         </div>
       </div>
       <div class="form-group row">
         <label for="fineEvento" class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-form-label">Data Fine</label>
         <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-          <p type="text" class="form-control-plaintext" id="fineEvento">{{dateFormatter.formateDateDHM(modalData.event.end)}}</p>
+          <p type="text" class="form-control-plaintext" id="fineEvento">
+            {{dateFormatter.formateDateDHM(modalData.event.end)}}</p>
         </div>
       </div>
     </div>
